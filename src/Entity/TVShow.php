@@ -2,6 +2,8 @@
 
 namespace Entity;
 
+use Database\MyPdo;
+
 class TVShow
 {
     private int $id;
@@ -34,5 +36,18 @@ class TVShow
     public function getPosterId(): int
     {
         return $this->posterId;
+    }
+
+    public static function findById(int $id): TVShow
+    {
+        $requete = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                SELECT * 
+                FROM tvshow
+                WHERE id = :id
+            SQL
+        );
+        $requete->execute(['id' => $id]);
+        return $requete->fetchObject(TVShow::class);
     }
 }
