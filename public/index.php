@@ -7,6 +7,7 @@ $webPage = new AppWebPage("Séries TV");
 foreach (TVShowCollection::findAll() as $tvShow) {
     $webPage->appendContent(
         <<<HTML
+<a href="show.php?showId={$tvShow->getId()}">
 <div class="show">
 <div class="showPoser">
 <img src="poster.php?posterId={$tvShow->getPosterId()}" alt="{$tvShow->getName()}">
@@ -18,6 +19,7 @@ foreach (TVShowCollection::findAll() as $tvShow) {
 {$tvShow->getOverview()}
 </div>
 </div>
+</a>
 HTML
     );
 }
