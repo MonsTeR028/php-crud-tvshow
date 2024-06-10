@@ -3,7 +3,6 @@
 namespace Entity\Collection;
 
 use Database\MyPdo;
-use Entity\Album;
 use Entity\TVShow;
 
 class TVShowCollection
