@@ -1,0 +1,34 @@
+{
+  "name": "gatien/sae2-01",
+  "description": "Développement d'une application Web de consultation et modification de séries pour la SAE2-01",
+  "type": "project",
+  "license": "Copyleft",
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Gatien GENEVOIS",
+      "email": "gatien.genevois@etudiant.univ-reims.fr"
+    },
+    {
+      "name": "Tristan AUDINOT",
+      "email": "tristan.audinot@etudiant.univ-reims.fr"
+    }
+  ],
+  "require": {
+    "ext-pdo": "*"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.58",
+    "codeception/codeception": "*",
+    "codeception/module-phpbrowser": "*",
+    "codeception/module-asserts": "*",
+    "codeception/module-db": "*",
+    "ext-dom": "*",
+    "ext-libxml": "*"
+  }
+}
+
