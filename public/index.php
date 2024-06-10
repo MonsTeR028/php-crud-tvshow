@@ -1,16 +1,15 @@
 <?php
 
 use Entity\Collection\TVShowCollection;
-use Html\WebPage;
+use Html\AppWebPage;
 
-$webPage = new WebPage("Séries TV");
-$webPage->appendContent("<h1>Série TV</h1>");
+$webPage = new AppWebPage("Séries TV");
 foreach (TVShowCollection::findAll() as $tvShow) {
     $webPage->appendContent(
         <<<HTML
 <div class="show">
 <div class="showPoser">
-<img src="" alt="">
+<img src="poster.php?posterId={$tvShow->getPosterId()}" alt="{$tvShow->getName()}">
 </div>
 <div class="showTitle">
 {$tvShow->getName()}
