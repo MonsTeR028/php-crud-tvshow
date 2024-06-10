@@ -10,6 +10,16 @@ class Poster
     private int $id;
     private string $jpeg;
 
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getJpeg(): string
+    {
+        return $this->jpeg;
+    }
+
     /**
      * Méthode de classe qui renvoie et crée une instance d'un Poster avec son id et son jpeg
      * @param $id : Identifiant du poster
