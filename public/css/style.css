@@ -31,6 +31,7 @@ h1{
     overflow: scroll;
     flex: 1;
     flex-direction: column;
+    overflow-x:hidden;
 }
 .list{
     display: flex;
@@ -81,4 +82,23 @@ h1{
     font-size:20px;
     text-align:center;
     margin-bottom:2%;
+}
+.showOriginalTitle{
+    text-align:center;
+    font-family:monospace;
+}
+.season{
+    display: flex;
+    background-color: aliceblue;
+    border-radius: 10px;
+    align-items:center;
+    padding: 1%;
+    margin: 1%;
+}
+.seasonTitle{
+    display:block;
+    margin:auto;
+}
+.seasonPoster>img{
+    height:10rem
 }
