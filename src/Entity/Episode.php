@@ -8,7 +8,7 @@ class Episode
     private int $seasonId;
     private string $name;
     private string $overview;
-    private string $episodeNumber;
+    private int $episodeNumber;
 
     public function getId(): int
     {
@@ -30,12 +30,12 @@ class Episode
         $this->seasonId = $seasonId;
     }
 
-    public function getEpisodeNumber(): string
+    public function getEpisodeNumber(): int
     {
         return $this->episodeNumber;
     }
 
-    public function setEpisodeNumber(string $episodeNumber): void
+    public function setEpisodeNumber(int $episodeNumber): void
     {
         $this->episodeNumber = $episodeNumber;
     }
