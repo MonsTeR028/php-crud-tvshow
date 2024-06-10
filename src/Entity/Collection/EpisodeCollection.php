@@ -12,13 +12,13 @@ class EpisodeCollection
      * @param int $seasonId : l'identifiant de la série dont on veut trouver les épisodes
      * @return array|false : tableau des épisodes de la série
      */
-    public function findBySeasonId(int $seasonId): false|array
+    public static function findBySeasonId(int $seasonId): false|array
     {
         $episodeStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
             SELECT *
             FROM episode
-            WHERE seasonId =: seasonId
+            WHERE seasonId = :seasonId
             SQL
         );
         $episodeStmt->execute(['seasonId' => $seasonId]);
