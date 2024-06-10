@@ -10,7 +10,7 @@ class TVShowCollection
     /**
      * @return TVShow[]
      */
-    public static function findAll() : array
+    public static function findAll(): array
     {
         $requete = MyPdo::getInstance()->prepare(
             <<<'SQL'
