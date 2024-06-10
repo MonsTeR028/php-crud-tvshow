@@ -255,4 +255,3 @@ while (($ligne = $stmt->fetch()) !== false) {
     echo "<p>{$ligne['name']}\n";
 }
 */
-

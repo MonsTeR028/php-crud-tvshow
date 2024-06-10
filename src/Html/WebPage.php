@@ -6,7 +6,6 @@ namespace Html;
 
 class WebPage
 {
-
     private string $head;
     private string $title;
     private string $body;

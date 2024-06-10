@@ -2,3 +2,4 @@
 .idea/
 /.mypdo.ini
 .mypdo.ini/
+.php-cs-fixer.cache
