@@ -3,6 +3,7 @@
 namespace Entity;
 
 use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
 
 class TVShow
 {
@@ -38,6 +39,9 @@ class TVShow
         return $this->posterId;
     }
 
+    /**
+     * @throws EntityNotFoundException
+     */
     public static function findById(int $id): TVShow
     {
         $requete = MyPdo::getInstance()->prepare(
@@ -48,6 +52,10 @@ class TVShow
             SQL
         );
         $requete->execute(['id' => $id]);
-        return $requete->fetchObject(TVShow::class);
+        $resultat = $requete->fetchObject(TVShow::class);
+        if (false === $resultat) {
+            throw new EntityNotFoundException("Artist - L'artiste (id: {$id}) n'existe pas");
+        }
+        return $resultat;
     }
 }
