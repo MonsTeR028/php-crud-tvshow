@@ -8,17 +8,17 @@ foreach (TVShowCollection::findAll() as $tvShow) {
     $webPage->appendContent(
         <<<HTML
 <a href="show.php?showId={$tvShow->getId()}">
-<div class="show">
-<div class="showPoser">
-<img src="poster.php?posterId={$tvShow->getPosterId()}" alt="{$tvShow->getName()}">
-</div>
-<div class="showTitle">
-{$tvShow->getName()}
-</div>
-<div class="showDescription">
-{$tvShow->getOverview()}
-</div>
-</div>
+    <div class="show">
+        <div class="showPoser">
+            <img src="poster.php?posterId={$tvShow->getPosterId()}" alt="{$tvShow->getName()}">
+        </div>
+        <div class="showTitle">
+            {$tvShow->getName()}
+        </div>
+        <div class="showDescription">
+            {$tvShow->getOverview()}
+        </div>
+    </div>
 </a>
 HTML
     );
