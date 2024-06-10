@@ -1,0 +1,84 @@
+html, body{
+    display: flex;
+    height:100%;
+    flex-direction: column;
+    font-family: Lato;
+}
+
+.header, .content, .footer, .list, .menu{
+
+    margin: 1%;
+    padding: 1%;
+}
+h1{
+    text-align: center;
+    background-color:whitesmoke;
+    border:1px solid dimgray;
+    border-radius:10px;
+}
+.list{
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    height: max-content;
+    padding:5%;
+}
+.list>a{
+    color: black;
+}
+.content{
+    display: flex;
+    overflow: scroll;
+    flex: 1;
+    flex-direction: column;
+}
+.list{
+    display: flex;
+    flex-direction: column;
+}
+.footer{
+    margin-bottom: 2%
+}
+.show{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    padding: 1%;
+    margin: 1%;
+}
+.informations{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin-left:1%;
+}
+.menu{
+    display: flex;
+    justify-content: space-evenly;
+}
+.menu>a{
+    color: black;
+    border: 1px solid black;
+    padding: 1%;
+}
+.show{
+    display: flex;
+    background-color: whitesmoke;
+    border-radius: 10px;
+}
+
+.menu>a:hover{
+    background-color: whitesmoke
+}
+.list>a{
+    text-decoration:none;
+}
+.showDescription{
+    font-style:italic;
+}
+.showTitle{
+    font-weight:bold;
+    font-size:20px;
+    text-align:center;
+    margin-bottom:2%;
+}
