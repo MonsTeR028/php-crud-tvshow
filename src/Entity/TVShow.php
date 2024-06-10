@@ -54,8 +54,18 @@ class TVShow
         $requete->execute(['id' => $id]);
         $resultat = $requete->fetchObject(TVShow::class);
         if (false === $resultat) {
-            throw new EntityNotFoundException("Artist - L'artiste (id: {$id}) n'existe pas");
+            throw new EntityNotFoundException("TVShow - La série TV (id: {$id}) n'existe pas");
         }
         return $resultat;
+    }
+
+    /**
+     * Renvoie l'instance de Poster appartenant à l'id de la classe TVShow
+     * @return Poster
+     * @throws EntityNotFoundException
+     */
+    public function findPosterById(): Poster
+    {
+        return Poster::findById($this->posterId);
     }
 }
