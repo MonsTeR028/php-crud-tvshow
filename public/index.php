@@ -9,7 +9,7 @@ foreach (TVShowCollection::findAll() as $tvShow) {
         <<<HTML
 <a href="show.php?showId={$tvShow->getId()}">
     <div class="show">
-        <div class="showPoser">
+        <div class="showPoster">
             <img src="poster.php?posterId={$tvShow->getPosterId()}" alt="{$tvShow->getName()}">
         </div>
         <div class="showTitle">
