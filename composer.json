@@ -29,5 +29,27 @@
     "codeception/module-db": "*",
     "ext-dom": "*",
     "ext-libxml": "*"
+  },
+  "scripts": {
+    "start:linux": [
+      "Composer\\Config::disableProcessTimeout",
+      "bin/run-server.sh"
+    ],
+    "start:windows": [
+      "Composer\\Config::disableProcessTimeout",
+      "bin/run-server.bat"
+    ],
+    "start": [
+      "@start:linux"
+    ],
+    "test:cs": [
+      "php vendor/bin/php-cs-fixer fix --dry-run"
+    ],
+    "diff:cs": [
+      "php vendor/bin/php-cs-fixer fix --dry-run --diff"
+    ],
+    "fix:cs": [
+      "php vendor/bin/php-cs-fixer fix"
+    ]
   }
 }
