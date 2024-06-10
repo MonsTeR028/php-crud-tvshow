@@ -2,6 +2,9 @@
 
 namespace Entity;
 
+use Database\MyPdo;
+use Entity\Exception\EntityNotFoundException;
+
 class Season
 {
     private int $id;
@@ -33,5 +36,22 @@ class Season
     public function getPosterId(): int
     {
         return $this->posterId;
+    }
+
+    public static function findById(int $id): Season
+    {
+        $requete = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                SELECT *
+                FROM season
+                WHERE id = :id
+            SQL
+        );
+        $requete->execute(['id' => $id]);
+        $resultat = $requete->fetchObject(Season::class);
+        if ($resultat == null) {
+            throw new EntityNotFoundException("Season - La saison (id: {$id}) n'existe pas");
+        }
+        return $resultat;
     }
 }
