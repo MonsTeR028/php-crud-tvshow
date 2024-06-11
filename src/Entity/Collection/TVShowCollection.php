@@ -5,6 +5,7 @@ namespace Entity\Collection;
 use Database\MyPdo;
 use Entity\Exception\EntityNotFoundException;
 use Entity\TVShow;
+use PDO;
 
 class TVShowCollection
 {
@@ -31,20 +32,18 @@ class TVShowCollection
      */
     public static function findByGenreId(int $genreId) : array
     {
-        $listeShow = [];
-        $requete = MyPdo::getInstance()->prepare(
+        $stmtShow = MyPdo::getInstance()->prepare(
             <<<'SQL'
-                SELECT tvShowId
-                FROM tvshow_genre
-                WHERE genreId = :genreId
+                SELECT *
+                FROM tvshow
+                WHERE id IN 
+                (SELECT tvShowId 
+                 FROM tvshow_genre
+                 WHERE genreId = :genreId)
             SQL
         );
-        $requete->execute(['genreId' => $genreId]);
-        $resultat = $requete->fetchAll(\PDO::FETCH_ASSOC);
-        foreach ($resultat['tvShowId'] as $tvShowId) {
-            $listeShow[] = TVShow::findById($tvShowId);
-        }
-        return $listeShow;
+        $stmtShow->execute(["genreId"=>$genreId]);
+        return $stmtShow->fetchAll(PDO::FETCH_CLASS, TVShow::class);
     }
 
     public static function findTVShowByResearch(string $research): array
@@ -63,3 +62,6 @@ class TVShowCollection
         return $requeteResearch->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
     }
 }
+
+
+
