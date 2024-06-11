@@ -104,7 +104,8 @@ class WebPage
             {$this->head}
         </head>
         <body>
-            {$this->getBody()}
+            {$this->home}
+            {$this->body}
             <p id="modif">{$this->getLastModification()}</p>
         </body>
         </html>

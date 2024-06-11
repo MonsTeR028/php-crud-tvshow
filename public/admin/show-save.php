@@ -5,7 +5,6 @@ declare(strict_types=1);
 use Entity\Exception\ParameterException;
 use Html\Form\TVShowForm;
 
-
 try {
     $showForm = new TVShowForm();
     $showForm->setEntityFromQueryString();

@@ -19,6 +19,7 @@ try {
     }
     //Création du formulaire
     $webPage = new WebPage("Formulaire série");
+    $webPage->appendHomeButton();
     $webPage->appendCssUrl('css/form.css');
     $showForm = new TvShowForm($show);
     $webPage->appendContent(
@@ -27,7 +28,6 @@ try {
     {$showForm->getHtmlForm('show-save.php')}   
 </div>
 HTML
-
     );
     echo $webPage->toHtml();
 

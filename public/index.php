@@ -17,16 +17,16 @@ Choisir un genre
     <option value="0" hidden></option>  
 HTML;
 
-foreach (GenreCollection::findAll() as $genre){
-if(isset($_GET['genre']) && $genre->getId() == (int)$_GET['genre']){
-    $genreSelector .= <<<HTML
+foreach (GenreCollection::findAll() as $genre) {
+    if(isset($_GET['genre']) && $genre->getId() == (int)$_GET['genre']) {
+        $genreSelector .= <<<HTML
 <option value="{$genre->getId()}" selected>{$genre->getName()}</option>
 HTML;
-}else{
-    $genreSelector .= <<<HTML
+    } else {
+        $genreSelector .= <<<HTML
 <option value="{$genre->getId()}">{$genre->getName()}</option>
 HTML;
-}
+    }
 }
 
 $genreSelector .= <<<HTML
@@ -55,10 +55,9 @@ $webPage->appendContent(
 
 if (!empty($_GET['recherche'])) {
     $listeShow = TVShowCollection::findTVShowByResearch($_GET['recherche']);
-}else if(!empty($_GET['genre'])){
+} elseif(!empty($_GET['genre'])) {
     $listeShow = TVShowCollection::findByGenreId((int)$_GET['genre']);
-}
-else {
+} else {
     $listeShow = TVShowCollection::findAll();
 }
 

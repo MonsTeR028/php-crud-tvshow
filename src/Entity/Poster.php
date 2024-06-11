@@ -25,7 +25,7 @@ class Poster
      * @param $id : Identifiant du poster
      * @throws EntityNotFoundException
      */
-    public static function findById(int $id) : Poster
+    public static function findById(int $id): Poster
     {
         $requete = MyPdo::getInstance()->prepare(
             <<<'SQL'

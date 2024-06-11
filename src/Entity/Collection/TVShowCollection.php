@@ -30,7 +30,7 @@ class TVShowCollection
      * @return TVShow[]
      * @throws EntityNotFoundException
      */
-    public static function findByGenreId(int $genreId) : array
+    public static function findByGenreId(int $genreId): array
     {
         $stmtShow = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -42,7 +42,7 @@ class TVShowCollection
                  WHERE genreId = :genreId)
             SQL
         );
-        $stmtShow->execute(["genreId"=>$genreId]);
+        $stmtShow->execute(["genreId" => $genreId]);
         return $stmtShow->fetchAll(PDO::FETCH_CLASS, TVShow::class);
     }
 
@@ -62,6 +62,3 @@ class TVShowCollection
         return $requeteResearch->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
     }
 }
-
-
-
