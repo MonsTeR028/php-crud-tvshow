@@ -19,7 +19,7 @@ class TVShow
         // appelé par le fetch
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
@@ -108,8 +108,32 @@ class TVShow
                 WHERE id = :id
             SQL
         );
-        $requeteSupp->execute(['id' => $this->getId()]);
-        $this->setId(null);
+        $requeteSupp->execute(['id' => $this->id]);
+        $this->id = null;
+        return $this;
+    }
+
+    public function update(): TVShow
+    {
+        $requeteModif = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                UPDATE tvshow
+                SET name = :name,
+                    originalName = :originalName,
+                    homepage = :homepage,
+                    overview = :overview
+                WHERE id = :id
+            SQL
+        );
+        $requeteModif->execute(
+            [
+                'name' => $this->name,
+                'originalName' => $this->originalName,
+                'homepage' => $this->homepage,
+                'overview' => $this->overview,
+                'id' => $this->id
+            ]
+        );
         return $this;
     }
 }
