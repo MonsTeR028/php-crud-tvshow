@@ -29,7 +29,7 @@ class TVShowCollection
      * @return TVShow[]
      * @throws EntityNotFoundException
      */
-    public static function findByTVShowId(int $genreId) : array
+    public static function findByGenreId(int $genreId) : array
     {
         $listeShow = [];
         $requete = MyPdo::getInstance()->prepare(
