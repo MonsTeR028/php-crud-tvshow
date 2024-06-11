@@ -7,12 +7,17 @@ use Entity\Exception\EntityNotFoundException;
 
 class TVShow
 {
-    private int $id;
+    private ?int $id;
     private string $name;
     private string $originalName;
     private string $homepage; // Page du site internet de la série
     private string $overview;
     private int $posterId;
+
+    private function __construct()
+    {
+        // appelé par le fetch
+    }
 
     public function getId(): int
     {
@@ -38,6 +43,32 @@ class TVShow
     {
         return $this->posterId;
     }
+    public function setId(?int $id):void
+    {
+        $this->id = $id;
+    }
+    public function setName(string $name):void
+    {
+        $this->name = $name;
+    }
+    public function setOriginalName(string $originalName):void
+    {
+        $this->originalName = $originalName;
+    }
+    public function setHomepage(string $homepage):void
+    {
+        $this->homepage = $homepage;
+    }
+    public function setOverview(string $overview):void
+    {
+        $this->overview = $overview;
+    }
+    public function setPosterId(int $posterId):void
+    {
+        $this->posterId = $posterId;
+    }
+
+
 
     /**
      * @throws EntityNotFoundException
@@ -67,5 +98,18 @@ class TVShow
     public function findPosterById(): Poster
     {
         return Poster::findById($this->posterId);
+    }
+
+    public function delete(): TVShow
+    {
+        $requeteSupp = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                DELETE FROM tvshow
+                WHERE id = :id
+            SQL
+        );
+        $requeteSupp->execute(['id' => $this->getId()]);
+        $this->setId(null);
+        return $this;
     }
 }
