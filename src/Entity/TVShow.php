@@ -12,7 +12,7 @@ class TVShow
     private string $originalName;
     private string $homepage; // Page du site internet de la série
     private string $overview;
-    private int $posterId;
+    private ?int $posterId;
 
     private function __construct()
     {
@@ -39,7 +39,7 @@ class TVShow
     {
         return $this->overview;
     }
-    public function getPosterId(): int
+    public function getPosterId(): ?int
     {
         return $this->posterId;
     }
@@ -63,7 +63,7 @@ class TVShow
     {
         $this->overview = $overview;
     }
-    public function setPosterId(int $posterId):void
+    public function setPosterId(?int $posterId):void
     {
         $this->posterId = $posterId;
     }
@@ -155,5 +155,33 @@ class TVShow
         );
         $this->id = (int) MyPdo::getInstance()->lastInsertId();
         return $this;
+    }
+
+    public function save(): TVShow
+    {
+        if (null == $this->id) {
+            $this->insert();
+        } else {
+            $this->update();
+        }
+
+        return $this;
+    }
+
+    public static function create(
+        string $name,
+        string $originalName,
+        string $homepage,
+        string $overview,
+        ?int $id = null
+    ): TVShow {
+        $show = new TVShow();
+        $show->setId($id);
+        $show->setName($name);
+        $show->setOriginalName($originalName);
+        $show->setHomepage($homepage);
+        $show->setOverview($overview);
+        $show->setPosterId(null);
+        return $show;
     }
 }
