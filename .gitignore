@@ -3,3 +3,4 @@
 /.mypdo.ini
 .mypdo.ini/
 .php-cs-fixer.cache
+/composer.phar
