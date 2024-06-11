@@ -57,7 +57,7 @@ class TVShowCollection
                 ORDER BY name
             SQL
         );
-        $research = strtoupper($research).'%';
+        $research = '%'.strtoupper($research).'%';
         $requeteResearch->execute(['research' => $research]);
 
         return $requeteResearch->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
