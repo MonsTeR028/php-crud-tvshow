@@ -1,6 +1,0 @@
-actor: CrudTester
-suite_namespace: Tests\Crud
-modules:
-    enabled:
-        - \Tests\Helper\Crud
-        - Asserts
