@@ -81,7 +81,7 @@ h1{
 .showTitle{
     font-weight:bold;
     font-size:20px;
-    text-align:center;
+    text-align:start;
     margin-bottom:2%;
 }
 .showOriginalTitle{
