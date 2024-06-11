@@ -17,9 +17,15 @@ Choisir un genre
 HTML;
 
 foreach (GenreCollection::findAll() as $genre){
+if($genre->getId() == (int)$_GET['genre']){
+    $genreSelector .= <<<HTML
+<option value="{$genre->getId()}" selected>{$genre->getName()}</option>
+HTML;
+}else{
     $genreSelector .= <<<HTML
 <option value="{$genre->getId()}">{$genre->getName()}</option>
 HTML;
+}
 
 }
 
