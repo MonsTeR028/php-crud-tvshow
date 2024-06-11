@@ -10,12 +10,14 @@ class WebPage
     private string $head;
     private string $title;
     private string $body;
+    private string $menu;
 
     public function __construct(string $title = '')
     {
         $this->title = $title;
         $this->head = '';
         $this->body = '';
+        $this->menu = '';
     }
 
     public function getHead(): string
@@ -36,6 +38,11 @@ class WebPage
     public function getBody(): string
     {
         return $this->body;
+    }
+
+    public function getMenu(): string
+    {
+        return $this->menu;
     }
 
     public function appendToHead(string $content): void
@@ -103,5 +110,15 @@ class WebPage
         $heure = date('H:i:s', getlastmod());
 
         return 'Derniere modification : ' . $date . ' - ' . $heure;
+    }
+
+    public function appendToMenu(string $content): void
+    {
+        $this->menu .= $content;
+    }
+
+    public function appendMenuButton(string $texte, string $url): void
+    {
+        $this->menu .= "<a class='button' id='$texte' href='{$url}'>{$texte}</a>";
     }
 }
