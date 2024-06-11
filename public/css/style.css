@@ -172,3 +172,18 @@ h1{
         width: 100px
     }
 }
+.filters{
+    display: flex;
+    justify-content: left;
+    color: white;
+    margin: 1%;
+}
+.filters>form>label>input{
+    border-radius: 10px;
+    border-style: none;
+    padding: 2%;
+}
+.filters>a{
+    color: white;
+    margin-left: 2%;
+}
