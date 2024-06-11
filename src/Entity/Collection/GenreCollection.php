@@ -37,7 +37,7 @@ class GenreCollection
             <<<'SQL'
                 SELECT genreId
                 FROM tvshow_genre
-                WHERE tvShowId = tvShowId
+                WHERE tvShowId = :tvShowId
             SQL
         );
         $requete->execute(['tvShowId' => $tvShowId]);
