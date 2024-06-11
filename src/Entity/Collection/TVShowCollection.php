@@ -46,4 +46,20 @@ class TVShowCollection
         }
         return $listeShow;
     }
+
+    public static function findTVShowByResearch(string $research): array
+    {
+        $requeteResearch = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                SELECT *
+                FROM tvshow
+                WHERE UPPER(name) LIKE :research
+                ORDER BY name
+            SQL
+        );
+        $research = '%'.strtoupper($research).'%';
+        $requeteResearch->execute(['research' => $research]);
+
+        return $requeteResearch->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
+    }
 }
