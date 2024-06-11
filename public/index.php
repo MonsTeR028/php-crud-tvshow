@@ -14,10 +14,11 @@ $genreSelector = <<<HTML
 <label for="genre-select">
 Choisir un genre
 <select name="genre" id="genre-select">
+    <option value="0" hidden></option>  
 HTML;
 
 foreach (GenreCollection::findAll() as $genre){
-if($genre->getId() == (int)$_GET['genre']){
+if(isset($_GET['genre']) && $genre->getId() == (int)$_GET['genre']){
     $genreSelector .= <<<HTML
 <option value="{$genre->getId()}" selected>{$genre->getName()}</option>
 HTML;
@@ -26,7 +27,6 @@ HTML;
 <option value="{$genre->getId()}">{$genre->getName()}</option>
 HTML;
 }
-
 }
 
 $genreSelector .= <<<HTML
@@ -36,17 +36,20 @@ HTML;
 
 $webPage->appendContent(
     <<<HTML
-        <form class="recherche-show" method="get" action="index.php">
-            <label>
-                Recherche :
-                <input name="recherche" type="text" value="$rech">
+        <div class="filters">
+            <form class="recherche-show" method="get" action="index.php">
+                <label>
+                    Recherche :
+                    <input name="recherche" type="text" value="$rech">
+                    <button type="submit">Envoyer</button>
+                </label>
+            </form>
+            <form class="recherche-show" method="get" action="index.php">
+                {$genreSelector}
                 <button type="submit">Envoyer</button>
-            </label>
-        </form>
-    <form class="recherche-show" method="get" action="index.php">
-            {$genreSelector}
-            <button type="submit">Envoyer</button>
-        </form>
+            </form>
+            <a href="index.php">Réinitialiser les filtres</a>
+       </div>
     HTML
 );
 
