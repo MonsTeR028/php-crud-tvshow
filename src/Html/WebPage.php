@@ -129,8 +129,8 @@ class WebPage
         $this->menu .= "<a class='button' id='$texte' href='{$url}'>{$texte}</a>";
     }
 
-    public function appendHomeButton(string $url): void
+    public function appendHomeButton(): void
     {
-        $this->home .= "<a class='homeButton' href='{$url}'><img src='../../public/img/home.png'></a>";
+        $this->home .= "<a class='homeButton' href='/index.php'><img src='/img/home.png'></a>";
     }
 }
