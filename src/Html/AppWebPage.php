@@ -4,18 +4,13 @@ namespace Html;
 
 class AppWebPage extends WebPage
 {
-    private string $menu;
     public function __construct(string $title = "")
     {
         parent::__construct($title);
         $this->appendCssUrl("/css/style.css");
-        $this->menu = "";
     }
 
-    public function appendToMenu(string $content): void
-    {
-        $this->menu .= $content;
-    }
+
 
     public function toHtml(): string
     {
@@ -38,7 +33,7 @@ class AppWebPage extends WebPage
                 <div class="header" data-aos="zoom-in"><h1>{$this->getTitle()}</h1></div>
                 <div class="content" data-aos="zoom-out-left">
                     <div class="menu">
-                        {$this->menu}
+                        {$this->getMenu()}
                     </div>
                     <div class="list">
                     {$this->getBody()}

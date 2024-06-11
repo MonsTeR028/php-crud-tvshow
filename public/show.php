@@ -16,6 +16,8 @@ try {
     }
     $tvshow = TVShow::findById((int)$_GET['showId']);
     $appWebPage->setTitle("Saisons de {$appWebPage->escapeString($tvshow->getName())}");
+    $appWebPage->appendMenuButton('Modifier', '/admin/show-form.php?showId='.$tvshow->getId());
+    $appWebPage->appendMenuButton('Supprimer', '/admin/show-delete.php?showId='.$tvshow->getId());
     $originalName = "";
     if($tvshow->getOriginalName() != $tvshow->getName()) {
         $originalName = $tvshow->getOriginalName();
