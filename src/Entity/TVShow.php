@@ -181,7 +181,6 @@ class TVShow
         $show->setOriginalName($originalName);
         $show->setHomepage($homepage);
         $show->setOverview($overview);
-        $show->setPosterId(null);
         return $show;
     }
 }
