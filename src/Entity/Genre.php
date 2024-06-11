@@ -29,7 +29,6 @@ class Genre
                 SELECT *
                 FROM genre
                 WHERE id = :id
-                ORDER BY name
             SQL
         );
         $requete->execute(['id' => $id]);

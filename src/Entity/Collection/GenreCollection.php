@@ -9,6 +9,23 @@ use Entity\Genre;
 class GenreCollection
 {
     /**
+     * @return Genre[]
+     */
+    public static function findAll() : array
+    {
+        $requete = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                SELECT *
+                FROM genre
+                ORDER BY name
+            SQL
+        );
+        $requete->execute();
+        return $requete->fetchAll(\PDO::FETCH_CLASS, Genre::class);
+    }
+
+
+    /**
      * @param int $tvShowId
      * @return Genre[]
      * @throws EntityNotFoundException
