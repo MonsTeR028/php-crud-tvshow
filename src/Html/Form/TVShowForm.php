@@ -43,6 +43,7 @@ class TVShowForm
                     Description :
                     <input name="overview" type="text" value="{$this->escapeString($this->show?->getOverview())}" required>
                 </label>
+                <button type="submit">Enregistrer</button>
             </form>
         HTML;
     }
