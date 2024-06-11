@@ -15,7 +15,7 @@ try {
         exit();
     }
     $season = Season::findById((int)$_GET['seasonId']);
-    $appWebPage->setTitle("Saisons de {$appWebPage->escapeString($season->getName())}");
+    $appWebPage->setTitle("Episodes de {$appWebPage->escapeString($season->getName())}");
     $tvShow = TvShow::findById($season->getTvShowId());
     $appWebPage->appendContent(
         <<<HTML
