@@ -10,8 +10,6 @@ class AppWebPage extends WebPage
         $this->appendCssUrl("/css/style.css");
     }
 
-
-
     public function toHtml(): string
     {
         $lastModification = WebPage::getLastModification();
@@ -42,9 +40,9 @@ class AppWebPage extends WebPage
                     </div>
                 </div>
             <div class="footer">$lastModification</div> 
-            <script>
-              AOS.init();
-            </script>
+                <script>
+                    AOS.init();
+                </script>
             </body>
         </html>
         HTML;
