@@ -19,8 +19,16 @@ try {
     }
     //Création du formulaire
     $webPage = new WebPage("Formulaire série");
+    $webPage->appendCssUrl('css/form.css');
     $showForm = new TvShowForm($show);
-    $webPage->appendContent($showForm->getHtmlForm('show-save.php'));
+    $webPage->appendContent(
+        <<<HTML
+<div class="form">
+    {$showForm->getHtmlForm('show-save.php')}   
+</div>
+HTML
+
+    );
     echo $webPage->toHtml();
 
 } catch (ParameterException) {
