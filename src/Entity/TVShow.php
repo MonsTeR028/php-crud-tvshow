@@ -141,8 +141,8 @@ class TVShow
     {
         $requeteInsert = MyPdo::getInstance()->prepare(
             <<<'SQL'
-                INSERT INTO tvshow (name, originalName, homapage, overview)
-                VALUES (:name, :originalName, :homepage, :overview)
+                INSERT INTO tvshow (name, originalName, homepage, overview, posterId)
+                VALUES (:name, :originalName, :homepage, :overview, NULL)
             SQL
         );
         $requeteInsert->execute(
@@ -173,7 +173,8 @@ class TVShow
         string $originalName,
         string $homepage,
         string $overview,
-        ?int $id = null
+        ?int $id = null,
+        ?int $posterId = null
     ): TVShow {
         $show = new TVShow();
         $show->setId($id);
@@ -181,6 +182,7 @@ class TVShow
         $show->setOriginalName($originalName);
         $show->setHomepage($homepage);
         $show->setOverview($overview);
+        $show->setPosterId($posterId);
         return $show;
     }
 }

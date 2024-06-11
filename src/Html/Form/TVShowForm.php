@@ -43,6 +43,7 @@ class TVShowForm
                     Description :
                     <input name="overview" type="text" value="{$this->escapeString($this->show?->getOverview())}" required>
                 </label>
+                <button type="submit">Enregistrer</button>
             </form>
         HTML;
     }
@@ -57,10 +58,10 @@ class TVShowForm
             $id = (int) $_POST['id'];
         }
         if (!empty($_POST['name']) && !empty($_POST['originalName']) && !empty($_POST['homepage']) && !empty($_POST['overview'])) {
-            $name = $this->escapeString($this->stripTagsAndTrim($_POST['name']));
-            $originalName = $this->escapeString($this->stripTagsAndTrim($_POST['originalName']));
+            $name = $this->stripTagsAndTrim($_POST['name']);
+            $originalName = $this->stripTagsAndTrim($_POST['originalName']);
             $homepage = $_POST['homepage'];
-            $overview = $this->escapeString($this->stripTagsAndTrim($_POST['overview']));
+            $overview = $this->stripTagsAndTrim($_POST['overview']);
         } else {
             throw new ParameterException("TVShowForm - setEntityFromQueryString : Paramètre(s) invalide(s)");
         }
