@@ -4,6 +4,7 @@ use Entity\Collection\TVShowCollection;
 use Html\AppWebPage;
 
 $webPage = new AppWebPage("Séries TV");
+$webPage->appendMenuButton('Ajouter', '/admin/show-form.php');
 foreach (TVShowCollection::findAll() as $tvShow) {
     $webPage->appendContent(
         <<<HTML
