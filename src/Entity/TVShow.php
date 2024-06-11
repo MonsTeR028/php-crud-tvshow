@@ -136,4 +136,24 @@ class TVShow
         );
         return $this;
     }
+
+    public function insert(): TVShow
+    {
+        $requeteInsert = MyPdo::getInstance()->prepare(
+            <<<'SQL'
+                INSERT INTO tvshow (name, originalName, homapage, overview)
+                VALUES (:name, :originalName, :homepage, :overview)
+            SQL
+        );
+        $requeteInsert->execute(
+            [
+                'name' => $this->name,
+                'originalName' => $this->originalName,
+                'homepage' => $this->homepage,
+                'overview' => $this->overview
+            ]
+        );
+        $this->id = (int) MyPdo::getInstance()->lastInsertId();
+        return $this;
+    }
 }
