@@ -30,7 +30,10 @@ class AppWebPage extends WebPage
                 {$this->getHead()}
             </head>
             <body>
-                <div class="header" data-aos="zoom-in"><h1>{$this->getTitle()}</h1></div>
+                <div class="header" data-aos="zoom-in">
+                    {$this->getHome()}
+                    <h1>{$this->getTitle()}</h1>
+                </div>
                 <div class="content" data-aos="zoom-out-left">
                     <div class="menu">
                         {$this->getMenu()}
