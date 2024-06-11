@@ -8,12 +8,14 @@ class WebPage
 {
     use StringEscaper;
     private string $head;
+    private string $home;
     private string $title;
     private string $body;
     private string $menu;
 
     public function __construct(string $title = '')
     {
+        $this->home = '';
         $this->title = $title;
         $this->head = '';
         $this->body = '';
@@ -43,6 +45,11 @@ class WebPage
     public function getMenu(): string
     {
         return $this->menu;
+    }
+
+    public function getHome(): string
+    {
+        return $this->home;
     }
 
     public function appendToHead(string $content): void
@@ -120,5 +127,10 @@ class WebPage
     public function appendMenuButton(string $texte, string $url): void
     {
         $this->menu .= "<a class='button' id='$texte' href='{$url}'>{$texte}</a>";
+    }
+
+    public function appendHomeButton(): void
+    {
+        $this->home .= "<a class='homeButton' href='/index.php'><img src='/img/home.png'></a>";
     }
 }

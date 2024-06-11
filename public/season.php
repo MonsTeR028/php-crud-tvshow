@@ -16,6 +16,7 @@ try {
     }
     $season = Season::findById((int)$_GET['seasonId']);
     $appWebPage->setTitle("Episodes de {$appWebPage->escapeString($season->getName())}");
+    $appWebPage->appendHomeButton();
     $tvShow = TvShow::findById($season->getTvShowId());
     $appWebPage->appendContent(
         <<<HTML
