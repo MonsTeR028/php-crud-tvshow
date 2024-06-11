@@ -142,7 +142,6 @@ h1{
     background-image: linear-gradient(92.88deg, #FFEDD8 9.16%, white 43.89%, whitesmoke 64.72%);
     border-radius: 8px;
     border-style: none;
-    box-sizing: border-box;
     color: #FFFFFF;
     cursor: pointer;
     flex-shrink: 0;
@@ -150,16 +149,16 @@ h1{
     font-size: 16px;
     font-weight: 500;
     height: 4rem;
-    padding: 0 1.6rem;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
     transition: all .5s;
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 200px;
+    width: 150px;
     text-align: center;
-    height: 50px;
+    height: 20px;
     text-decoration:none;
+    align-content:center;
 }
 
 .button:hover {
@@ -177,8 +176,12 @@ h1{
     justify-content: left;
     color: white;
     margin: 1%;
+    flex-wrap:wrap;
+    background-color:darkgray;
+    padding:2%;
+    border-radius:10px
 }
-.filters>form>label>input{
+.filters>form>label>input, #genre-select{
     border-radius: 10px;
     border-style: none;
     padding: 2%;
@@ -186,4 +189,18 @@ h1{
 .filters>a{
     color: white;
     margin-left: 2%;
+}
+button[type="submit"]{
+    border-radius:10px;
+    border-style:none;
+    margin:2%
+}
+button[type="submit"]:hover{
+    cursor:pointer
+}
+.homeButton>img{
+    width:30px;
+    position:absolute;
+    top:35%;
+    left:2%;
 }
