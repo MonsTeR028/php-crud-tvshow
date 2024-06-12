@@ -108,6 +108,16 @@ h1{
 .showOriginalTitle{
     font-family:monospace;
 }
+.showGenre {
+    display: flex;
+    gap: 2%;
+}
+
+.showGenre > p {
+    font-size: 0.8em;
+    color: #31363F;
+
+}
 .season{
     display: flex;
     background-color: white;
@@ -234,22 +244,36 @@ button[type="submit"]:hover{
     left:1.5%;
 }
 
-@media screen and (max-width : 500px){
-    .show{
-        flex-direction: column;
-    }
-    .list > a:nth-child(even) > .show {
-        flex-direction: column;
-    }
-    .show>.showPoster{
-        display: block;
-        margin: auto;
-    }
-}
-
 @media screen and (min-width: 1920px) {
     body {
         justify-content: center;
         width: 1920px;
+    }
+}
+
+@media screen and (max-width : 700px){
+    .showGenre {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media screen and (max-width : 500px){
+    .show{
+        flex-direction: column;
+    }
+    .list > a:nth-child(odd) > .show {
+        flex-direction: column;
+    }
+    .informations {
+        align-items: center;
+    }
+
+    .informations > * > * {
+        text-align: center;
+    }
+    .show>.showPoster{
+        display: block;
+        margin: auto;
     }
 }
