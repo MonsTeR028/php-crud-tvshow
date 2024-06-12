@@ -56,6 +56,7 @@ Ce projet consiste à développer une application Web de consultation de séries
 
 1. **Installer Codeception globalement si ce n'est pas déjà fait :** `composer global require codeception/codeception`
 2. **Initialiser Codeception dans le projet :** `codecept bootstrap`
+3. **Utitliser la commande `composer:test` pour lancer les test**
 
 ## Fonctionnalités
 
