@@ -3,60 +3,79 @@
 use PHPUnit\Framework\TestCase;
 use Entity\Collection\GenreCollection;
 use Entity\Genre;
-use Database\MyPdo;
 
 class GenreCollectionTest extends TestCase
 {
-    private $pdo;
+    private $dbFile = 'tests/test_database.db';
 
     protected function setUp(): void
     {
-        $this->pdo = MyPdo::getInstance();
+        // Créer une nouvelle base de données SQLite
+        $this->createDatabase();
 
-        // Créez les tables et insérez des données de test
-        $this->pdo->exec('
-            CREATE TABLE IF NOT EXISTS genre (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL
-            );
-        ');
-
-        $this->pdo->exec('
-            CREATE TABLE IF NOT EXISTS tvshow_genre (
-                tvShowId INTEGER NOT NULL,
-                genreId INTEGER NOT NULL,
-                PRIMARY KEY(tvShowId, genreId)
-            );
-        ');
-
-        $this->pdo->exec('DELETE FROM genre');
-        $this->pdo->exec('DELETE FROM tvshow_genre');
-
-        $this->pdo->exec("
-            INSERT INTO genre (name) VALUES 
-            ('Drama'),
-            ('Comedy'),
-            ('Action')
-        ");
-
-        $this->pdo->exec("
-            INSERT INTO tvshow_genre (tvShowId, genreId) VALUES 
-            (1, 1),
-            (1, 2),
-            (2, 3)
-        ");
+        // Insérer des données de test
+        $this->insertTestData();
     }
 
     protected function tearDown(): void
     {
-        // Nettoyer les tables après chaque test
-        $this->pdo->exec('DELETE FROM genre');
-        $this->pdo->exec('DELETE FROM tvshow_genre');
+        // Supprimer la base de données SQLite après chaque test
+        unlink($this->dbFile);
+    }
+
+    private function createDatabase()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Créer la table genre
+        $db->exec('CREATE TABLE IF NOT EXISTS genre (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+        )');
+
+        // Créer la table tvshow_genre
+        $db->exec('CREATE TABLE IF NOT EXISTS tvshow_genre (
+            tvShowId INTEGER NOT NULL,
+            genreId INTEGER NOT NULL,
+            PRIMARY KEY(tvShowId, genreId)
+        )');
+    }
+
+    private function insertTestData()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Insérer des données de test pour la table genre
+        $stmt = $db->prepare("INSERT INTO genre (name) VALUES (:name)");
+
+        $stmt->bindValue(':name', 'Drama');
+        $stmt->execute();
+
+        $stmt->bindValue(':name', 'Comedy');
+        $stmt->execute();
+
+        $stmt->bindValue(':name', 'Action');
+        $stmt->execute();
+
+        // Insérer des données de test pour la table tvshow_genre
+        $stmt = $db->prepare("INSERT INTO tvshow_genre (tvShowId, genreId) VALUES (:tvShowId, :genreId)");
+
+        $stmt->bindValue(':tvShowId', 1);
+        $stmt->bindValue(':genreId', 1);
+        $stmt->execute();
+
+        $stmt->bindValue(':tvShowId', 1);
+        $stmt->bindValue(':genreId', 2);
+        $stmt->execute();
+
+        $stmt->bindValue(':tvShowId', 2);
+        $stmt->bindValue(':genreId', 3);
+        $stmt->execute();
     }
 
     public function testFindAll()
     {
-        $genres = GenreCollection::findAll();
+        $genres = GenreCollection::findAll($this->dbFile);
 
         $this->assertIsArray($genres);
         $this->assertCount(3, $genres);
@@ -68,7 +87,7 @@ class GenreCollectionTest extends TestCase
 
     public function testFindByTVShowId()
     {
-        $genres = GenreCollection::findByTVShowId(1);
+        $genres = GenreCollection::findByTVShowId(1, $this->dbFile);
 
         $this->assertIsArray($genres);
         $this->assertCount(2, $genres);
@@ -79,7 +98,7 @@ class GenreCollectionTest extends TestCase
 
     public function testFindByTVShowIdReturnsEmptyArrayIfNoneFound()
     {
-        $genres = GenreCollection::findByTVShowId(999);
+        $genres = GenreCollection::findByTVShowId(999, $this->dbFile);
 
         $this->assertIsArray($genres);
         $this->assertCount(0, $genres);

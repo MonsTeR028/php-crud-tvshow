@@ -3,42 +3,54 @@
 use PHPUnit\Framework\TestCase;
 use Entity\Genre;
 use Entity\Exception\EntityNotFoundException;
-use Database\MyPdo;
 
 class GenreTest extends TestCase
 {
-    private $pdo;
+    private $dbFile = 'tests/test_database.db';
 
     protected function setUp(): void
     {
-        $this->pdo = MyPdo::getInstance();
+        // Créer une nouvelle base de données SQLite
+        $this->createDatabase();
 
-        // Créez les tables et insérez des données de test
-        $this->pdo->exec('
-            CREATE TABLE IF NOT EXISTS genre (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT NOT NULL
-            );
-        ');
-
-        $this->pdo->exec('DELETE FROM genre');
-
-        $this->pdo->exec("
-            INSERT INTO genre (name) VALUES 
-            ('Action'),
-            ('Drama')
-        ");
+        // Insérer des données de test
+        $this->insertTestData();
     }
 
     protected function tearDown(): void
     {
-        // Nettoyer les tables après chaque test
-        $this->pdo->exec('DELETE FROM genre');
+        // Supprimer la base de données SQLite après chaque test
+        unlink($this->dbFile);
+    }
+
+    private function createDatabase()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Créer la table genre
+        $db->exec('CREATE TABLE IF NOT EXISTS genre (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL
+        )');
+    }
+
+    private function insertTestData()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Insérer des données de test
+        $stmt = $db->prepare("INSERT INTO genre (name) VALUES (:name)");
+
+        $stmt->bindValue(':name', 'Action');
+        $stmt->execute();
+
+        $stmt->bindValue(':name', 'Drama');
+        $stmt->execute();
     }
 
     public function testFindById()
     {
-        $genre = Genre::findById(1);
+        $genre = Genre::findById(1, $this->dbFile);
 
         $this->assertInstanceOf(Genre::class, $genre);
         $this->assertSame(1, $genre->getId());
@@ -50,6 +62,6 @@ class GenreTest extends TestCase
         $this->expectException(EntityNotFoundException::class);
         $this->expectExceptionMessage("Genre - Le genre (id: 999) n'existe pas");
 
-        Genre::findById(999);
+        Genre::findById(999, $this->dbFile);
     }
 }

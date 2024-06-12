@@ -3,45 +3,63 @@
 use PHPUnit\Framework\TestCase;
 use Entity\Season;
 use Entity\Exception\EntityNotFoundException;
-use Database\MyPdo;
 
 class SeasonTest extends TestCase
 {
-    private $pdo;
+    private $dbFile = 'tests/test_database.db';
 
     protected function setUp(): void
     {
-        $this->pdo = MyPdo::getInstance();
+        // Créer une nouvelle base de données SQLite
+        $this->createDatabase();
 
-        // Créez les tables et insérez des données de test
-        $this->pdo->exec('
-            CREATE TABLE IF NOT EXISTS season (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                tvShowId INTEGER NOT NULL,
-                name TEXT NOT NULL,
-                seasonNumber INTEGER NOT NULL,
-                posterId INTEGER
-            );
-        ');
-
-        $this->pdo->exec('DELETE FROM season');
-
-        $this->pdo->exec("
-            INSERT INTO season (tvShowId, name, seasonNumber, posterId) VALUES 
-            (1, 'Season 1', 1, NULL),
-            (1, 'Season 2', 2, NULL)
-        ");
+        // Insérer des données de test
+        $this->insertTestData();
     }
 
     protected function tearDown(): void
     {
-        // Nettoyer les tables après chaque test
-        $this->pdo->exec('DELETE FROM season');
+        // Supprimer la base de données SQLite après chaque test
+        unlink($this->dbFile);
+    }
+
+    private function createDatabase()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Créer la table season
+        $db->exec('CREATE TABLE IF NOT EXISTS season (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tvShowId INTEGER NOT NULL,
+            name TEXT NOT NULL,
+            seasonNumber INTEGER NOT NULL,
+            posterId INTEGER
+        )');
+    }
+
+    private function insertTestData()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Insérer des données de test
+        $stmt = $db->prepare("INSERT INTO season (tvShowId, name, seasonNumber, posterId) VALUES (:tvShowId, :name, :seasonNumber, :posterId)");
+
+        $stmt->bindValue(':tvShowId', 1);
+        $stmt->bindValue(':name', 'Season 1');
+        $stmt->bindValue(':seasonNumber', 1);
+        $stmt->bindValue(':posterId', null);
+        $stmt->execute();
+
+        $stmt->bindValue(':tvShowId', 1);
+        $stmt->bindValue(':name', 'Season 2');
+        $stmt->bindValue(':seasonNumber', 2);
+        $stmt->bindValue(':posterId', null);
+        $stmt->execute();
     }
 
     public function testFindById()
     {
-        $season = Season::findById(1);
+        $season = Season::findById(1, $this->dbFile);
 
         $this->assertInstanceOf(Season::class, $season);
         $this->assertSame(1, $season->getId());
@@ -56,7 +74,7 @@ class SeasonTest extends TestCase
         $this->expectException(EntityNotFoundException::class);
         $this->expectExceptionMessage("Season - La saison (id: 999) n'existe pas");
 
-        Season::findById(999);
+        Season::findById(999, $this->dbFile);
     }
 
     public function testSettersAndGetters()

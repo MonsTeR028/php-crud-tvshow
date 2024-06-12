@@ -31,7 +31,8 @@
     "ext-dom": "*",
     "ext-libxml": "*",
     "phpunit/phpunit": "^9.5",
-    "ext-pdo_sqlite": "*"
+    "ext-pdo_sqlite": "*",
+    "ext-sqlite3": "*"
   },
   "scripts": {
     "start:linux": [

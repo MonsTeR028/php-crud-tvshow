@@ -3,42 +3,54 @@
 use PHPUnit\Framework\TestCase;
 use Entity\Poster;
 use Entity\Exception\EntityNotFoundException;
-use Database\MyPdo;
 
 class PosterTest extends TestCase
 {
-    private $pdo;
+    private $dbFile = 'tests/test_database.db';
 
     protected function setUp(): void
     {
-        $this->pdo = MyPdo::getInstance();
+        // Créer une nouvelle base de données SQLite
+        $this->createDatabase();
 
-        // Créez les tables et insérez des données de test
-        $this->pdo->exec('
-            CREATE TABLE IF NOT EXISTS poster (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                jpeg TEXT NOT NULL
-            );
-        ');
-
-        $this->pdo->exec('DELETE FROM poster');
-
-        $this->pdo->exec("
-            INSERT INTO poster (jpeg) VALUES 
-            ('poster1.jpg'),
-            ('poster2.jpg')
-        ");
+        // Insérer des données de test
+        $this->insertTestData();
     }
 
     protected function tearDown(): void
     {
-        // Nettoyer les tables après chaque test
-        $this->pdo->exec('DELETE FROM poster');
+        // Supprimer la base de données SQLite après chaque test
+        unlink($this->dbFile);
+    }
+
+    private function createDatabase()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Créer la table poster
+        $db->exec('CREATE TABLE IF NOT EXISTS poster (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            jpeg TEXT NOT NULL
+        )');
+    }
+
+    private function insertTestData()
+    {
+        $db = new SQLite3($this->dbFile);
+
+        // Insérer des données de test
+        $stmt = $db->prepare("INSERT INTO poster (jpeg) VALUES (:jpeg)");
+
+        $stmt->bindValue(':jpeg', 'poster1.jpg');
+        $stmt->execute();
+
+        $stmt->bindValue(':jpeg', 'poster2.jpg');
+        $stmt->execute();
     }
 
     public function testFindById()
     {
-        $poster = Poster::findById(1);
+        $poster = Poster::findById(1, $this->dbFile);
 
         $this->assertInstanceOf(Poster::class, $poster);
         $this->assertSame(1, $poster->getId());
@@ -50,7 +62,7 @@ class PosterTest extends TestCase
         $this->expectException(EntityNotFoundException::class);
         $this->expectExceptionMessage("Poster - Le poster (id: 999) n'existe pas");
 
-        Poster::findById(999);
+        Poster::findById(999, $this->dbFile);
     }
 
     public function testSettersAndGetters()
