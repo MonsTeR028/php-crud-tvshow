@@ -131,7 +131,7 @@ class WebPage
         <html lang="fr">
         <head>
             <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+            <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
             <meta http-equiv="X-UA-Compatible" content="ie=edge">
             <title>{$this->title}</title>
             <style>#modif {text-align: end; font-style: italic; font-size: 14px; margin: 0;}</style>
@@ -166,6 +166,6 @@ class WebPage
 
     public function appendHomeButton(): void
     {
-        $this->home .= "<a class='homeButton' href='/index.php'><img src='/img/home.png'></a>";
+        $this->home .= "<a class='homeButton' href='/index.php'><img src='/img/home.png' alt='Image retour au menu'></a>";
     }
 }

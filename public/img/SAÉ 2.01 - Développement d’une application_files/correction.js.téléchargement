@@ -1,0 +1,99 @@
+/* Au chargement de la page Web incluant ce script,
+ * trouver tous les '<iframe class='autosize'
+ * pour les redimensionner à la taille de leur contenu
+ */
+window.addEventListener('load', function () {
+    const accessibleObjects = Array.from(document.querySelectorAll('object')).filter(function (value) {
+        return value.querySelector('a[href]') !== null;
+    });
+    const accessibleTags = document.querySelectorAll('.accessibility');
+    const count = accessibleObjects.length+(accessibleTags.length-1);
+    if (count >= 1) {
+        document.querySelector('#accessibility-menu a').addEventListener('click', function (e) {
+            e.preventDefault();
+            accessibleObjects.forEach(e => {
+                e.setAttribute('role', e.classList.contains('accessible') ? 'img' : 'textbox');
+                e.classList.toggle('accessible');
+                const data = e.getAttribute('data');
+                const alternateData = e.querySelector('a[href]');
+                e.setAttribute('data', alternateData.href);
+                alternateData.href = data;
+            });
+            accessibleTags.forEach(e => e.classList.toggle('show'));
+        });
+        window.addEventListener('keypress', function (e) {
+            if (e.key === 'a' && e.altKey === false && e.ctrlKey === false) {
+                document.querySelector('#accessibility-menu a').click();
+            }
+        });
+        document.querySelector('#accessibility-count').innerHTML = ' : '+count+' élément'+(count >1?'s':'')
+    } else {
+        document.querySelector('#accessibility-menu a').classList.add('hidden');
+    }
+
+
+    function scrollBarWidth()
+    {
+        document.body.style.overflow = 'hidden';
+        let width = document.body.clientWidth;
+        document.body.style.overflow = 'scroll';
+        width -= document.body.clientWidth;
+        if (!width) {
+            width = document.body.offsetWidth - document.body.clientWidth;
+        }
+        document.body.style.overflow = '';
+
+        return parseInt(width);
+    }
+
+    function resizeIframe(frame)
+    {
+        try {
+            let innerDoc = (frame.contentDocument) ? frame.contentDocument : frame.contentWindow.document;
+            let height = 100;
+            const maxWidth = innerDoc.body.parentNode.scrollWidth;
+            if (document.all) {
+                // IE ...
+                height = parseInt(innerDoc.body.scrollHeight)
+                    + parseInt(innerDoc.body.offsetTop)
+                    + parseInt(innerDoc.body.topMargin)
+                    + parseInt(innerDoc.body.bottomMargin);
+            } else {
+                // Navigateur normal !
+                height = innerDoc.body.parentNode.scrollHeight;
+            }
+//        innerDoc.body.style.marginTop=0;
+//        innerDoc.body.style.marginBottom=0;
+            if (maxWidth > frame.parentNode.scrollWidth) {
+                // console.log(frame, frame.parentNode.scrollWidth, maxWidth, height) ;
+                height += scrollBarWidth();
+            }
+            let size = 0;
+            const top = window.getComputedStyle(innerDoc.body).getPropertyValue("margin-top");
+            if (top) {
+                if ((size = top.match(/^([0-9]+)px/)) && size[1]) {
+                    // console.log(size) ;
+                    height += parseInt(size[1]);
+                }
+            }
+            const bottom = window.getComputedStyle(innerDoc.body).getPropertyValue("margin-bottom");
+            if (bottom) {
+                if ((size = bottom.match(/^([0-9]+)px/)) && size[1]) {
+                    height += parseInt(size[1]);
+                }
+            }
+            height += "px";
+            if (frame.style) {
+                frame.style.height = height;
+            } else {
+                frame.height = height;
+            }
+        } catch (err) {
+            window.status = err.message;
+        }
+    }
+
+    document.querySelectorAll('iframe.autosize').forEach(function (iframe) {
+        resizeIframe(iframe);
+    });
+});

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<!-- saved from url=(0079)https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html -->
+<html lang="fr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jérôme Cutrona">
+    <meta name="description" content="Ressources pédagogiques de programmation Web du BUT informatique de l&#39;IUT de Reims">
+    <meta name="keywords" content="ressources pédagogiques, informatique, programmation, web, php, symfony, but informatique, iut reims, université reims">
+    <title>SAÉ 2.01 - Développement d’une application</title>
+    <link href="./SAÉ 2.01 - Développement d’une application_files/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .realisation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.5em;
+    }
+    .realisation__question {
+        flex-grow: 1;
+    }
+    .realisation__bareme {
+        padding: 0.1em 0.5em;
+        flex-shrink: 0;
+    }
+    .note1 {
+        color: white;
+        background-color: darkblue;
+    }
+    .note2 {
+        color: white;
+        background-color: darkgreen;
+    }
+	</style>
+</head>
+<body>
+  <div id="page">
+    <header>
+    <div class="tete">
+        <div id="accessibility-menu"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#" title="Cliquez pour afficher ou cacher des éléments additionnels dédiés à l&#39;accessibilité">Accessibilité<span class="accessibility"> activée</span> (appuyez sur la touche «&nbsp;<code>a</code>&nbsp;»)</a><span id="accessibility-count"> : 1 élément</span></div>
+
+    </div>
+            <div class="extranet">
+            <img src="./SAÉ 2.01 - Développement d’une application_files/jerome-cutrona.jpg" style="float:right; max-width:25%; clip-path: circle(48% at 50% 50%);" alt="Jérôme Cutrona">
+            <p><span><i>Version statique</i> de l'intranet de <a href="https://fr.linkedin.com/in/j%C3%A9r%C3%B4me-cutrona-71513440" title="LinkedIn Jérôme Cutrona">Jérôme Cutrona</a></span>
+             - <span><a href="https://iut-info.univ-reims.fr/users/cutrona/restricted/but/s2/sae2-01/">Rejoindre la version dynamique 🔒</a></span>
+            </p><p>Les exemples et corrections sont potentiellement non fonctionnels.
+            </p><p><a href="https://www.univ-reims.fr/formation/catalogue-de-formation/dut-informatique,23515,38949.html?args=R9qFsCnMmKDtxCa17YTDkHVqaqbfYRXwwTnCVt2witCDUIiVoUdkeMDp%2AXGEGm2SMIhvMbuZ3_kOrRxvJlk6dOorIryuNioRCyFFyPAvhl9tCdwYdtHRrwAvNC1tDg_H&amp;formation_id=17">B.U.T. Informatique</a>
+               - <a href="https://www.iut-rcc.fr/">IUT de Reims</a>
+               - <a href="https://www.univ-reims.fr/">Université de Reims</a>
+        </p></div>
+        <h1>SAÉ 2.01 - Développement d’une application</h1>
+    </header>    <div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_MenuNavigation">
+      <div class="legend">Navigation</div>
+        <div class="content">
+<ol class="navigation num"><li class="home"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/index.html">Accueil</a>
+</li><li class="home"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/index.html">Programmation Web S2</a>
+</li><li class="partie "><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#apprentissages-critiques">Apprentissages critiques</a>
+</li><li class="partie "><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#introduction">Introduction</a>
+</li><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#versionnage-du-projet">Versionnage du projet</a>
+</li><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#mise-en-place-du-projet">Mise en place du projet</a>
+</li><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#base-de-donnees">Base de données</a>
+</li><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree">Réalisations demandées et progression suggérée</a>
+<ol class="num"><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree-contraintes-de-realisation">Contraintes de réalisation</a>
+</li><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree-realisations-demandees">Réalisations demandées</a>
+</li><li class="partie num"><a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree-evaluation">Évaluation</a>
+</li></ol></li></ol>
+
+        </div>
+    </div>
+
+    <main class="parties">
+      <div class="Correction_PartieTitre Correction_PartieSujet Correction_ObjectifsSujet">
+        <h2 id="apprentissages-critiques" class="titre ">Apprentissages critiques
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#apprentissages-critiques">¶</a></h2>
+        <div class="contenu">
+        <ul>
+  <li>Implémenter des conceptions simples
+  </li><li>Élaborer des conceptions simples
+  </li><li>Faire des essais et évaluer leurs résultats en regard des spécifications
+  </li><li>Développer des interfaces utilisateurs
+</li></ul>
+
+        </div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h2 id="introduction" class="titre ">Introduction
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#introduction">¶</a></h2>
+        <div class="contenu">
+            <p>Le projet global s'articule autour d'une base de données que vous allez afficher sous forme d'une application Web de consultation. Dans un second temps, vous produirez les interfaces Web permettant de modifier le contenu de la base de données.
+    </p><p>Après l'initialisation du projet <code>Composer</code> en suivant les mêmes consignes et méthodes que dans le TP «&nbsp;CRUD Music&nbsp;», vous réaliserez les classes et programmes nécessaires pour obtenir les maquettes de pages fournies. Vous utiliserez vos connaissances <code>CSS</code> et <code>flex</code> pour les mettre en forme. Vous serez brièvement guidés sur l'ordre de réalisation, mais vous devrez reproduire par vous-même des choix de conception et de réalisation similaires à ceux effectués pour les TP.
+        </p></div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h2 id="versionnage-du-projet" class="titre num">Versionnage du projet
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#versionnage-du-projet">¶</a></h2>
+        <div class="contenu">
+            <p>Vous travaillerez en binôme. L'un des deux membres aura la charge de créer le dépôt GitLab qui sera nommé «&nbsp;<code>php-crud-tvshow</code>&nbsp;». La <a href="https://iut-info.univ-reims.fr/users/nourrit/restricted/cours/git/tp03.html">collaboration entre les deux membres du binôme suivra les mêmes règles que celles présentées dans le TP «&nbsp;Collaboration avec Gitlab&nbsp;»</a>&nbsp;:
+    </p><ul>
+        <li>Un fichier «&nbsp;<code>README.md</code>&nbsp;» présentera le nom, prénom et login des membres du binôme
+        </li><li>La branche principale sera protégée juste après la mise en place du projet, aucun <code>commit</code> direct n'est autorisé
+        </li><li>Vos productions seront faites sous forme de branches qui seront soumises à la revue de code de votre partenaire et fusionnées lorsqu'elles sont considérées admissibles
+        </li><li>L'équilibre entre les contributions des deux membres du binôme sera considéré    <div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Alerte">
+      <div class="legend">Remarque importante</div>
+        <div class="content">
+    <p>La note de chacun des deux partenaires sera proportionnelle à la quantité et la qualité de ses contributions.
+        </p></div>
+    </div>
+        </li><li>Chaque <code>commit</code> sera le plus ciblé possible    <div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Alerte">
+      <div class="legend">Remarque importante</div>
+        <div class="content">
+    <p>Tout <code>commit</code> qui ne respecte pas les règles, car il apporte trop de fichiers et/ou trop de nouveautés en une seule fois, sera considéré comme du plagiat et sera purement et simplement ignoré.
+    </p><p>En dehors de la mise en place du projet et de l'ajout des classes fournies, un <code>commit</code> doit introduire en une fois un seul des éléments suivants&nbsp;:
+        </p><ul>
+            <li>Une classe avec ses propriétés, ses accesseurs et mutateurs
+            </li><li>Une méthode complexe
+            </li><li>Un programme
+            </li><li>Un fichier de ressource
+        </li></ul>
+    <p>L'<a href="https://www.jetbrains.com/help/phpstorm/commit-and-push-changes.html">interface de gestion de versions <code>PhpStorm</code></a> propose d'<a href="https://www.jetbrains.com/help/phpstorm/commit-and-push-changes.html#partial_commit">effectuer un <code>commit</code> sur une partie des fichiers modifiés</a>. Utilisez cette fonctionnalité pour structurer vos <code>commits</code>.
+        </p></div>
+    </div>
+        </li><li>Chaque message de <code>commit</code> sera clair et explicite
+        </li><li>Vous veillerez à ce que vos nom et prénom réels et mail universitaire <a href="https://iut-info.univ-reims.fr/users/nourrit/restricted/cours/git/tp01.html#configuration">soient configurés dans <code>git</code></a> de façon identique à l'IUT et sur votre ordinateur personnel
+        </li><li>Puisque vous travaillerez en équipe, les fichiers de configuration de <code>PhpStorm</code> (répertoire «&nbsp;<code>.idea</code>&nbsp;» dans le projet) seront exclus de l'index <code>Git</code>
+    </li></ul>
+        </div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h2 id="mise-en-place-du-projet" class="titre num">Mise en place du projet
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#mise-en-place-du-projet">¶</a></h2>
+        <div class="contenu">
+            <p>Tout comme en TP, vous utiliserez <code>Composer</code> pour initialiser un projet dans lequel vous utiliserez l'auto-chargement.
+    </p><p>Lors de l'initialisation du projet («&nbsp;<code>composer init</code>&nbsp;»), <code>Composer</code> crée le fichier «&nbsp;<code>composer.json</code>&nbsp;» qui contient les informations sur le projet et ses dépendances. Un seul des membres du binôme crée le projet. Le second devra cloner le dépôt <code>git</code> et installer les dépendances du projet avec «&nbsp;<code>composer install</code>&nbsp;».
+    </p><p>L'ajout des classes indispensables comme «&nbsp;<code>MyPdo</code>&nbsp;» ou «&nbsp;<code>WebPage</code>&nbsp;» peut se faire dès la mise en place du projet.
+        </p></div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h2 id="base-de-donnees" class="titre num">Base de données
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#base-de-donnees">¶</a></h2>
+        <div class="contenu">
+            <p>Votre application va interagir avec une base de données <code>MySQL</code> qui contient les épisodes et saisons de séries TV. Elle est composée comme suit&nbsp;:
+        <object class="illustration" type="image/png" data="./SAÉ 2.01 - Développement d’une application_files/tvshow.png" aria-label="Le schéma de la base de données">
+            <a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/img/tvshow.txt">Le schéma de la base de données</a>
+        </object>
+    </p><p>Cette base est fournie sous forme de script à importer dans <a href="http://phpmyadmin/"><code>phpMyAdmin</code></a>. Chacun des membres du binôme doit configurer sa propre copie de la base puisque le fichier de configuration contenant le mot de passe ne doit pas se retrouver sur le dépôt <code>git</code>.
+    </p><p>Pour importer la base dans votre compte <code>MySQL</code> au département informatique ou sur votre propre serveur <code>MySQL</code> sur <code>XAMPP</code>, vous devez créer une nouvelle base de données et <a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/utils/correction/dl.php%3Ff=%252Fbut%252Fs2%252Fsae2-01%252Fressources%252Fjonque01_tvshow.sql">télécharger le script de création de la base <code>MySQL</code></a> afin de pouvoir l'importer.    </p><div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Alerte">
+      <div class="legend">Remarque importante</div>
+        <div class="content">
+    <p>N'oubliez pas de sélectionner la base de données avant d'importer le script.
+        </p></div>
+    </div>
+
+        </div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h2 id="realisations-demandees-et-progression-suggeree" class="titre num">Réalisations demandées et progression suggérée
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree">¶</a></h2>
+        <div class="contenu">
+            <p>Vous devez réaliser une application équivalente au sujet de TP «&nbsp;CRUD Music&nbsp;» transposé à la base de données fournie.      </p><div class="Correction_PartieTitre Correction_PartieSujet">
+        <h3 id="realisations-demandees-et-progression-suggeree-contraintes-de-realisation" class="titre num">Contraintes de réalisation
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree-contraintes-de-realisation">¶</a></h3>
+        <div class="contenu">
+            <p>Vous devrez impérativement respecter les contraintes de réalisation suivantes&nbsp;:
+    </p><ul>
+        <li>Votre code <code>PHP</code> devra être conforme à la recommandation «&nbsp;PSR-12&nbsp;» et vous utiliserez les outils nécessaires au respect de cette consigne
+        </li><li>Votre code sera en anglais&nbsp;: noms de classes, noms de propriétés, noms de méthodes, noms de variables, noms des programmes.
+        </li><li>Le projet doit pouvoir fonctionner sur <code>Linux</code> comme sur <code>Windows</code>.
+        </li><li>Vous documenterez systématiquement les fonctionnalités, programmes, scripts <code>Composer</code> ou autres fichiers de configuration dans le fichier «&nbsp;<code>README.md</code>&nbsp;».
+        </li><li>Vous utiliserez «&nbsp;<code>MyPDO</code>&nbsp;» et «&nbsp;<code>WebPage</code>&nbsp;» (voire «&nbsp;<code>AppWebPage</code>&nbsp;») pour vos développements
+        </li><li>Votre code sera structuré en classes d'entités représentant les lignes des tables de base de données, de collections d'entités et de formulaires d'entités, exactement comme en TP
+        </li><li>Les mises en forme <code>CSS</code> devront obligatoirement utiliser «&nbsp;<code>flexbox</code>&nbsp;», être pensées «&nbsp;mobile first&nbsp;» et faire usage des «&nbsp;media queries&nbsp;» pour proposer un affichage correct quelle que soit la largeur d'affichage
+        </li><li>Vous validerez le contenu <code>HTML</code> et <code>CSS</code> de vos pages Web, et leur performance sera vérifiée avec <code>Lighthouse</code>
+        </li><li>Si des programmes nécessitent des paramètres de «&nbsp;query string&nbsp;» <code>GET</code>, des réponses <code>HTTP</code> avec des codes de statut appropriés seront données en cas de problème
+        </li><li>Les tests, facultatifs, s'appuient sur <a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/utils/correction/dl.php%3Ff=%252Fbut%252Fs2%252Fsae2-01%252Fressources%252Ftests%252F_data%252Ftvshow-lite.sql">une base de données <code>SQLite</code> au contenu réduit</a>.
+    </li></ul>
+        </div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h3 id="realisations-demandees-et-progression-suggeree-realisations-demandees" class="titre num">Réalisations demandées
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree-realisations-demandees">¶</a></h3>
+        <div class="contenu">
+                <ol class="realisations">
+            <li><span class="realisation">
+                    <span class="realisation__question">Liste de l'ensemble des séries</span>
+                    <span class="realisation__bareme note1">11,5 points</span>
+                </span>
+                <img class="wireframe" src="./SAÉ 2.01 - Développement d’une application_files/index.png" width="954" height="705" alt="Maquette de la page d&#39;accueil de l&#39;application (liste des séries)">    <div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Information">
+      <div class="legend">Information</div>
+        <div class="content">
+        <p>Une <a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/ressources/public/img/default.png">affiche par défaut</a> sera proposée à l'aide d'une redirection <code>HTTP</code> s'il n'y a pas de poster lors de l'affichage d'une série.
+        </p></div>
+    </div>
+            </li><li><span class="realisation">
+                    <span class="realisation__question">Détails d'une série avec la liste de ses saisons</span>
+                    <span class="realisation__bareme note1">8,5 points</span>
+                </span>
+                <img class="wireframe" src="./SAÉ 2.01 - Développement d’une application_files/seasons.png" width="953" height="705" alt="Maquette de la page de détails d&#39;une série avec la liste de ses saisons">    <div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Information">
+      <div class="legend">Information</div>
+        <div class="content">
+        <p>Une <a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/ressources/public/img/default.png">image par défaut</a> sera proposée à l'aide d'une redirection <code>HTTP</code> s'il n'y a pas de poster lors de l'affichage d'une série ou d'une saison.
+        </p></div>
+    </div>
+            </li><li><span class="realisation">
+                    <span class="realisation__question">Détails d'une saison avec liste de ses épisodes</span>
+                    <span class="realisation__bareme note2">4,75 points</span>
+                </span>
+                <img class="wireframe" src="./SAÉ 2.01 - Développement d’une application_files/episodes.png" width="946" height="705" alt="Maquette de la page de détails d&#39;une saison avec la liste de ses épisodes">    <div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Information">
+      <div class="legend">Information</div>
+        <div class="content">
+        <p>Une <a href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/ressources/public/img/default.png">image par défaut</a> sera proposée à l'aide d'une redirection <code>HTTP</code> s'il n'y a pas de poster lors de l'affichage d'une saison.
+        </p></div>
+    </div>
+            </li><li><span class="realisation">
+                    <span class="realisation__question">Création, édition, suppression d'une série TV</span>
+                    <span class="realisation__bareme note2">11,75 points</span>
+                </span>
+                <ul>
+                    <li>un menu sera ajouté pour le retour à la page d'accueil
+                    </li><li>l'édition d'une série doit préserver le poster existant
+                    </li><li>le poster d'une série est facultatif lors de la création, et il n'est pas demandé de le gérer
+                    </li><li>un menu sera ajouté pour proposer les fonctionnalités de création, d'édition et de suppression
+                </li></ul>
+            </li><li><span class="realisation">
+                    <span class="realisation__question">Filtrage des séries par genre</span>
+                    <span class="realisation__bareme note2">3,5 points</span>
+                </span>
+            </li><li><span class="realisation">
+                    <span class="realisation__question">Ajout des tests des méthodes des classes et des programmes (facultatif)</span>
+                    <span class="realisation__bareme note1">2 points bonus</span>
+                    <span class="realisation__bareme note2">2 points bonus</span>
+                </span>
+        </li></ol>
+        </div>
+      </div>      <div class="Correction_PartieTitre Correction_PartieSujet">
+        <h3 id="realisations-demandees-et-progression-suggeree-evaluation" class="titre num">Évaluation
+        <a class="bookmark" title="Lien vers ce paragraphe" href="https://iut-info.univ-reims.fr/users/cutrona/intranet/but/s2/sae2-01/index.html#realisations-demandees-et-progression-suggeree-evaluation">¶</a></h3>
+        <div class="contenu">
+                <p>La liste des réalisations demandées comporte un barème indicatif susceptible d'évoluer. Les points obtenus constituent les deux notes brutes de la SAÉ (<span class="note1">barème note 1</span> et <span class="note2">barème note 2</span>).
+        </p><p>Ces notes brutes peuvent subir un malus individuel allant jusqu'à 2 points si la qualité des messages de <code>commit</code> n'est pas satisfaisante.
+        </p><p>Pour finir d'individualiser la note, un coefficient multiplicateur de 0 à 1 sera appliqué pour refléter l'équilibre du travail entre les deux membres du binôme.    </p><div class="fieldset Correction_PartieTitre Correction_Fieldset Correction_Information">
+      <div class="legend">Information</div>
+        <div class="content">
+    <p>Pour vous évaluer, nous devons cloner votre dépôt <code>GitLab</code>, installer les dépendances, créer la base de données, charger les «&nbsp;fixtures&nbsp;» puis lancer les tests et démarrer le serveur Web. Veillez donc à ce que votre dépôt soit accessible et que les instructions pour installer et lancer votre application soient claires et précises. De plus, nous devons savoir ce que propose votre application. Ainsi, sans un minimum d'instructions sur les fonctionnalités présentes, sur les jeux de données disponibles et les procédures à réaliser, nous ne pourrons pas évaluer votre travail. <em>Toutes ces informations doivent figurer clairement dans le fichier «&nbsp;<code>README.md</code>&nbsp;»</em>.
+        </p></div>
+    </div>
+
+        </div>
+      </div>
+        </div>
+      </div>
+    </main>
+    <footer class="pied">
+        <span id="lastmodified">
+Dernière modification le 11/06/2024 - 09:48:48
+        </span>
+    </footer>
+  </div>
+    <script defer="" src="./SAÉ 2.01 - Développement d’une application_files/correction.js.téléchargement"></script>
+
+</body></html>
