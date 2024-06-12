@@ -76,6 +76,21 @@ foreach ($listeShow as $tvShow) {
                                     <div class="showDescription">
                                         {$tvShow->getOverview()}
                                     </div>
+                                    <div class="showGenre">\n            
+        HTML
+    );
+    $listeGenre = GenreCollection::findByTVShowId($tvShow->getId());
+    foreach ($listeGenre as $genre) {
+        $webPage->appendContent(
+            <<<HTML
+                                <p>{$genre->getName()}</p>\n
+            HTML
+        );
+    }
+
+    $webPage->appendContent(
+        <<<HTML
+                                    </div>
                                 </div>
                             </div>
                         </a>\n
