@@ -4,6 +4,7 @@ html, body{
     flex-direction: column;
     font-family: Lato;
     background-color: #31363F;
+    margin: 0 auto;
 }
 
 .header, .content, .footer, .list{
@@ -26,10 +27,14 @@ h1{
 .list>a{
     color: black;
 }
-.list > a:nth-child(even) > .show {
+.list > a:nth-child(odd) > .show {
     flex-direction: row-reverse;
 }
 .list>a>.show:hover {
+    background-color: rgb(255, 237, 216);
+}
+
+.list>a>.season:hover {
     background-color: rgb(255, 237, 216);
 }
 .content{
@@ -52,12 +57,21 @@ h1{
     border: 1px solid black;
     padding: 1%;
     margin: 1%;
+    flex-grow: 1;
 }
 .informations{
     display:flex;
     flex-direction:column;
-    justify-content:center;
+    justify-content:space-evenly;
     margin-left:1%;
+    flex-grow: 1;
+}
+
+.informationsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 3%;
 }
 .menu{
     display: flex;
@@ -86,21 +100,23 @@ h1{
 .showTitle{
     font-weight:bold;
     font-size:20px;
-    text-align:start;
-    margin-bottom:2%;
+}
+
+.showTitle > a:hover {
+    background-color: rgb(255, 237, 216);
 }
 .showOriginalTitle{
-    text-align:center;
     font-family:monospace;
 }
 .season{
     display: flex;
-    background-color: #FFEDD8;
+    background-color: white;
     border-radius: 10px;
     align-items:center;
     padding: 1%;
     margin: 1%;
-    justify-content: space-around
+    justify-content: space-around;
+    flex-grow: 1;
 }
 .seasonTitle{
     display:block;
@@ -132,8 +148,8 @@ h1{
 }
 .footer{
     color: white;
+    text-align: center;
 }
-
 .button{
     /* background-image: linear-gradient(92.88deg, #FFEDD8 9.16%, white 43.89%, whitesmoke 64.72%); */
     background-color: rgb(255, 237, 216);
@@ -228,5 +244,12 @@ button[type="submit"]:hover{
     .show>.showPoster{
         display: block;
         margin: auto;
+    }
+}
+
+@media screen and (min-width: 1920px) {
+    body {
+        justify-content: center;
+        width: 1920px;
     }
 }
