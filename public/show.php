@@ -30,11 +30,13 @@ try {
                                 <img src="poster.php?posterId={$tvshow->getPosterId()}" alt="{$tvshow->getName()}">
                             </div>
                             <div class="informations">
-                                <div class="showTitle">
-                                    {$tvshow->getName()}
-                                </div>
-                                <div class="showOriginalTitle">
-                                    {$originalName}
+                                <div class="informationsContent">
+                                    <div class="showTitle">
+                                        {$tvshow->getName()}
+                                    </div>
+                                    <div class="showOriginalTitle">
+                                        {$originalName}
+                                    </div>
                                 </div>
                                 <div class="showDescription">
                                     {$tvshow->getOverview()}
