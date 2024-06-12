@@ -12,7 +12,7 @@ $rech = empty($_GET['recherche']) ? null : $_GET['recherche'];
 
 $genreSelector = <<<HTML
 <label for="genre-select">
-                            Choisir un genre
+                            Choisir un genre :
                             <select name="genre" id="genre-select">
                                 <option value="0" hidden></option>\n
 HTML;
