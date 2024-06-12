@@ -20,22 +20,23 @@ class Genre
     }
 
     /**
+     * Permet de trouver un genre en fonction de son  identifiant
      * @throws EntityNotFoundException
      */
     public static function findById(int $id): Genre
     {
-        $requete = MyPdo::getInstance()->prepare(
+        $genreStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT *
                 FROM genre
                 WHERE id = :id
             SQL
         );
-        $requete->execute(['id' => $id]);
-        $resultat = $requete->fetchObject(Genre::class);
-        if ($resultat == null) {
+        $genreStmt->execute(['id' => $id]);
+        $genre = $genreStmt->fetchObject(Genre::class);
+        if ($genre == null) {
             throw new EntityNotFoundException("Genre - Le genre (id: {$id}) n'existe pas");
         }
-        return $resultat;
+        return $genre;
     }
 }

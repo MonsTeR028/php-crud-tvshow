@@ -22,6 +22,11 @@ class TVShowForm
         return $this->show;
     }
 
+    /**
+     * Permet de créer un formulaire pour une série
+     * @param string $action : url de traitement du formulaire
+     * @return string : le formulaire
+     */
     public function getHtmlForm(string $action): string
     {
         return <<<HTML
@@ -49,6 +54,7 @@ class TVShowForm
     }
 
     /**
+     * Permet de créer une série en récupérant les informations d'une query string
      * @throws ParameterException
      */
     public function setEntityFromQueryString(): void

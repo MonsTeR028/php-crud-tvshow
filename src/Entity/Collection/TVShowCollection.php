@@ -10,24 +10,26 @@ use PDO;
 class TVShowCollection
 {
     /**
-     * @return TVShow[]
+     * Permet de récupérer tout les série
+     * @return TVShow[] : tableau des séries
      */
     public static function findAll(): array
     {
-        $requete = MyPdo::getInstance()->prepare(
+        $showStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT *
                 FROM tvshow
                 ORDER BY name;
             SQL
         );
-        $requete->execute();
-        return $requete->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
+        $showStmt->execute();
+        return $showStmt->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
     }
 
     /**
-     * @param int $genreId
-     * @return TVShow[]
+     * Permet de récupérer les série selon leur genre
+     * @param int $genreId : l'identifiant du genre dont on veut les séries
+     * @return TVShow[] : tableau des séries
      * @throws EntityNotFoundException
      */
     public static function findByGenreId(int $genreId): array
@@ -46,9 +48,14 @@ class TVShowCollection
         return $stmtShow->fetchAll(PDO::FETCH_CLASS, TVShow::class);
     }
 
+    /**
+     * Permet de retrouver les série selon des mots
+     * @param string $research : la recherche
+     * @return array : tableau des séries
+     */
     public static function findTVShowByResearch(string $research): array
     {
-        $requeteResearch = MyPdo::getInstance()->prepare(
+        $stmtShow = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT *
                 FROM tvshow
@@ -57,8 +64,8 @@ class TVShowCollection
             SQL
         );
         $research = '%'.strtoupper($research).'%';
-        $requeteResearch->execute(['research' => $research]);
+        $stmtShow->execute(['research' => $research]);
 
-        return $requeteResearch->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
+        return $stmtShow->fetchAll(\PDO::FETCH_CLASS, TVShow::class);
     }
 }

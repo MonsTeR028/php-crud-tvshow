@@ -8,12 +8,13 @@ use Entity\Season;
 class SeasonCollection
 {
     /**
-     * @param int $id
-     * @return Season[]
+     * Permet de récupérer les saisons d'une série
+     * @param int $id : identifiant de la série
+     * @return Season[] : tableau des saisons de la série
      */
     public static function findByTVShowId(int $id): array
     {
-        $requete = MyPdo::getInstance()->prepare(
+        $seasonStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT *
                 FROM season
@@ -21,7 +22,7 @@ class SeasonCollection
                 ORDER BY seasonNumber
             SQL
         );
-        $requete->execute(['tvShowId' => $id]);
-        return $requete->fetchAll(\PDO::FETCH_CLASS, Season::class);
+        $seasonStmt->execute(['tvShowId' => $id]);
+        return $seasonStmt->fetchAll(\PDO::FETCH_CLASS, Season::class);
     }
 }

@@ -10,6 +10,10 @@ class AppWebPage extends WebPage
         $this->appendCssUrl("/css/style.css");
     }
 
+    /**
+     * Permet de créer la page html adapter à l'application
+     * @return string : la page html de l'application
+     */
     public function toHtml(): string
     {
         $lastModification = WebPage::getLastModification();

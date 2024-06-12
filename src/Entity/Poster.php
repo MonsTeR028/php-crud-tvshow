@@ -10,6 +10,16 @@ class Poster
     private int $id;
     private string $jpeg;
 
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function setJpeg(string $jpeg): void
+    {
+        $this->jpeg = $jpeg;
+    }
+
     public function getId(): int
     {
         return $this->id;
@@ -27,18 +37,18 @@ class Poster
      */
     public static function findById(int $id): Poster
     {
-        $requete = MyPdo::getInstance()->prepare(
+        $posterStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT *
                 FROM poster
                 WHERE id = :id
             SQL
         );
-        $requete->execute([":id" => $id]);
-        $resultat = $requete->fetchObject(Poster::class);
-        if ($resultat == null) {
+        $posterStmt->execute([":id" => $id]);
+        $poster = $posterStmt->fetchObject(Poster::class);
+        if ($poster == null) {
             throw new EntityNotFoundException("Poster - Le poster (id: {$id}) n'existe pas");
         }
-        return $resultat;
+        return $poster;
     }
 }
