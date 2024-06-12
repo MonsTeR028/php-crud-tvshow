@@ -11,7 +11,7 @@ class GenreCollection
     /**
      * @return Genre[]
      */
-    public static function findAll() : array
+    public static function findAll(): array
     {
         $requete = MyPdo::getInstance()->prepare(
             <<<'SQL'
@@ -30,7 +30,7 @@ class GenreCollection
      * @return Genre[]
      * @throws EntityNotFoundException
      */
-    public static function findByTVShowId(int $tvShowId) : array
+    public static function findByTVShowId(int $tvShowId): array
     {
         $listeGenre = [];
         $requete = MyPdo::getInstance()->prepare(

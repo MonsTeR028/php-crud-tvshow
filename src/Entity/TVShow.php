@@ -43,27 +43,27 @@ class TVShow
     {
         return $this->posterId;
     }
-    public function setId(?int $id):void
+    public function setId(?int $id): void
     {
         $this->id = $id;
     }
-    public function setName(string $name):void
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
-    public function setOriginalName(string $originalName):void
+    public function setOriginalName(string $originalName): void
     {
         $this->originalName = $originalName;
     }
-    public function setHomepage(string $homepage):void
+    public function setHomepage(string $homepage): void
     {
         $this->homepage = $homepage;
     }
-    public function setOverview(string $overview):void
+    public function setOverview(string $overview): void
     {
         $this->overview = $overview;
     }
-    public function setPosterId(?int $posterId):void
+    public function setPosterId(?int $posterId): void
     {
         $this->posterId = $posterId;
     }

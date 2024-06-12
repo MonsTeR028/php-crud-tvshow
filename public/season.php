@@ -20,29 +20,29 @@ try {
     $tvShow = TvShow::findById($season->getTvShowId());
     $appWebPage->appendContent(
         <<<HTML
-<div class="season">
-        <div class="seasonPoster">
-            <img src="poster.php?posterId={$season->getPosterId()}" alt="{$season->getName()}">
-        </div>
-        <div class="seasonInformations">
-            <div class="showTitle"><a href="{$tvShow->getHomepage()}">{$tvShow->getName()}</a></div>
-            <div class="seasonTitle">{$season->getName()}</div>
-        </div>
-</div>
+    <div class="season">
+                    <div class="seasonPoster">
+                        <img src="poster.php?posterId={$season->getPosterId()}" alt="{$season->getName()}">
+                    </div>
+                    <div class="seasonInformations">
+                        <div class="showTitle"><a href="{$tvShow->getHomepage()}">{$tvShow->getName()}</a></div>
+                        <div class="seasonTitle">{$season->getName()}</div>
+                    </div>
+                </div>\n
 HTML
     );
     foreach (EpisodeCollection::findBySeasonId((int)$_GET['seasonId']) as $episode) {
         $appWebPage->appendContent(
             <<<HTML
-<div class="episode">
-        <div class="episodeNumber">
-            {$episode->getEpisodeNumber()} - {$episode->getName()}
-        </div>
-        <div class="episodeDescription">
-            {$episode->getOverview()}
-        </div>
-</div>
-HTML
+                            <div class="episode">
+                                <div class="episodeNumber">
+                                    {$episode->getEpisodeNumber()} - {$episode->getName()}
+                                </div>
+                                <div class="episodeDescription">
+                                    {$episode->getOverview()}
+                                </div>
+                            </div>\n
+            HTML
         );
     }
 

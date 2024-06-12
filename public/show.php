@@ -25,38 +25,38 @@ try {
     }
     $appWebPage->appendContent(
         <<<HTML
-<div class="show">
-        <div class="showPoster">
-            <img src="poster.php?posterId={$tvshow->getPosterId()}" alt="{$tvshow->getName()}">
-        </div>
-        <div class="informations">
-            <div class="showTitle">
-                {$tvshow->getName()}
-            </div>
-            <div class="showOriginalTitle">
-                {$originalName}
-            </div>
-            <div class="showDescription">
-                {$tvshow->getOverview()}
-            </div>
-        </div>
-</div>
-HTML
+            <div class="show">
+                            <div class="showPoster">
+                                <img src="poster.php?posterId={$tvshow->getPosterId()}" alt="{$tvshow->getName()}">
+                            </div>
+                            <div class="informations">
+                                <div class="showTitle">
+                                    {$tvshow->getName()}
+                                </div>
+                                <div class="showOriginalTitle">
+                                    {$originalName}
+                                </div>
+                                <div class="showDescription">
+                                    {$tvshow->getOverview()}
+                                </div>
+                            </div>
+                        </div>\n
+        HTML
     );
     foreach (SeasonCollection::findByTVShowId((int)$_GET['showId']) as $season) {
         $appWebPage->appendContent(
             <<<HTML
-<a href="season.php?seasonId={$season->getId()}">
-<div class="season">
-        <div class="seasonPoster">
-            <img src="poster.php?posterId={$season->getPosterId()}" alt="{$season->getName()}">
-        </div>
-        <div class="seasonTitle">
-            {$season->getName()}
-        </div>
-</div>
-</a>
-HTML
+                            <a href="season.php?seasonId={$season->getId()}">
+                                <div class="season">
+                                    <div class="seasonPoster">
+                                        <img src="poster.php?posterId={$season->getPosterId()}" alt="{$season->getName()}">
+                                    </div>
+                                    <div class="seasonTitle">
+                                        {$season->getName()}
+                                    </div>
+                                </div>
+                            </a>\n
+            HTML
         );
     }
 
