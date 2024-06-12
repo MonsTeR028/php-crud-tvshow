@@ -9,42 +9,44 @@ use Entity\Genre;
 class GenreCollection
 {
     /**
-     * @return Genre[]
+     * Permet de retrouver tout les genres
+     * @return array : tableau des genres
      */
     public static function findAll(): array
     {
-        $requete = MyPdo::getInstance()->prepare(
+        $stmtGenre = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT *
                 FROM genre
                 ORDER BY name
             SQL
         );
-        $requete->execute();
-        return $requete->fetchAll(\PDO::FETCH_CLASS, Genre::class);
+        $stmtGenre->execute();
+        return $stmtGenre->fetchAll(\PDO::FETCH_CLASS, Genre::class);
     }
 
 
     /**
-     * @param int $tvShowId
-     * @return Genre[]
+     * Retoruve la liste des genres selon l'identifiant d'une série
+     * @param int $tvShowId : l'identifiant de la série
+     * @return Genre[] : liste des genres
      * @throws EntityNotFoundException
      */
     public static function findByTVShowId(int $tvShowId): array
     {
-        $listeGenre = [];
-        $requete = MyPdo::getInstance()->prepare(
+        $genreList = [];
+        $genreIdStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT genreId
                 FROM tvshow_genre
                 WHERE tvShowId = :tvShowId
             SQL
         );
-        $requete->execute(['tvShowId' => $tvShowId]);
-        $resultat = $requete->fetchAll(\PDO::FETCH_ASSOC);
-        foreach ($resultat['genreId'] as $genreId) {
-            $listeGenre[] = Genre::findById($genreId);
+        $genreIdStmt->execute(['tvShowId' => $tvShowId]);
+        $result = $genreIdStmt->fetchAll(\PDO::FETCH_ASSOC);
+        foreach ($result['genreId'] as $genreId) {
+            $genreList[] = Genre::findById($genreId);
         }
-        return $listeGenre;
+        return $genreList;
     }
 }
