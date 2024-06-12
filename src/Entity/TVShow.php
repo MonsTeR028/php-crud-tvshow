@@ -69,30 +69,32 @@ class TVShow
     }
 
 
-
     /**
+     * Permet de trouver une série en fonction de son identifiant
+     * @param int $id : identifiant de la série
+     * @return TVShow : la série
      * @throws EntityNotFoundException
      */
     public static function findById(int $id): TVShow
     {
-        $requete = MyPdo::getInstance()->prepare(
+        $showStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 SELECT * 
                 FROM tvshow
                 WHERE id = :id
             SQL
         );
-        $requete->execute(['id' => $id]);
-        $resultat = $requete->fetchObject(TVShow::class);
-        if (false === $resultat) {
+        $showStmt->execute(['id' => $id]);
+        $show = $showStmt->fetchObject(TVShow::class);
+        if (false === $show) {
             throw new EntityNotFoundException("TVShow - La série TV (id: {$id}) n'existe pas");
         }
-        return $resultat;
+        return $show;
     }
 
     /**
      * Renvoie l'instance de Poster appartenant à l'id de la classe TVShow
-     * @return Poster
+     * @return Poster : le poster
      * @throws EntityNotFoundException
      */
     public function findPosterById(): Poster
@@ -100,22 +102,30 @@ class TVShow
         return Poster::findById($this->posterId);
     }
 
+    /**
+     * Permet de supprimer une série
+     * @return $this : la série supprimée
+     */
     public function delete(): TVShow
     {
-        $requeteSupp = MyPdo::getInstance()->prepare(
+        $deleteStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 DELETE FROM tvshow
                 WHERE id = :id
             SQL
         );
-        $requeteSupp->execute(['id' => $this->id]);
+        $deleteStmt->execute(['id' => $this->id]);
         $this->id = null;
         return $this;
     }
 
+    /**
+     * Permet de mettre à jour une série
+     * @return $this
+     */
     public function update(): TVShow
     {
-        $requeteModif = MyPdo::getInstance()->prepare(
+        $updateStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 UPDATE tvshow
                 SET name = :name,
@@ -125,7 +135,7 @@ class TVShow
                 WHERE id = :id
             SQL
         );
-        $requeteModif->execute(
+        $updateStmt->execute(
             [
                 'name' => $this->name,
                 'originalName' => $this->originalName,
@@ -137,15 +147,19 @@ class TVShow
         return $this;
     }
 
+    /**
+     * Permet d'insérer une série
+     * @return $this : la série insérée
+     */
     public function insert(): TVShow
     {
-        $requeteInsert = MyPdo::getInstance()->prepare(
+        $insertStmt = MyPdo::getInstance()->prepare(
             <<<'SQL'
                 INSERT INTO tvshow (name, originalName, homepage, overview, posterId)
                 VALUES (:name, :originalName, :homepage, :overview, NULL)
             SQL
         );
-        $requeteInsert->execute(
+        $insertStmt->execute(
             [
                 'name' => $this->name,
                 'originalName' => $this->originalName,
@@ -157,6 +171,10 @@ class TVShow
         return $this;
     }
 
+    /**
+     * Permet d'insérer ou supprimer une série en fonction de son existence ou non
+     * @return $this : la série insérer/supprimer
+     */
     public function save(): TVShow
     {
         if (null == $this->id) {
@@ -168,6 +186,16 @@ class TVShow
         return $this;
     }
 
+    /**
+     * Permet de créer une série
+     * @param string $name : nom de la série
+     * @param string $originalName : nom original de la série
+     * @param string $homepage : lien vers la série
+     * @param string $overview : description de la série
+     * @param int|null $id : identifiant de la série
+     * @param int|null $posterId : identifiant du poster de la série
+     * @return TVShow : La sérié crée
+     */
     public static function create(
         string $name,
         string $originalName,
