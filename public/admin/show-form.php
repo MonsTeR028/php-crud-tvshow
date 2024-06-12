@@ -19,6 +19,7 @@ try {
     }
     //Création du formulaire
     $webPage = new WebPage("Formulaire série");
+    $webPage->appendToHead("<meta name='description' content='Formulaire pour une série'>");
     $webPage->appendHomeButton();
     $webPage->appendCssUrl('css/form.css');
     $showForm = new TvShowForm($show);
