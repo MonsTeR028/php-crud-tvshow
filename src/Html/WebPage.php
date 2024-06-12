@@ -166,6 +166,6 @@ class WebPage
 
     public function appendHomeButton(): void
     {
-        $this->home .= "<a class='homeButton' href='/index.php'><img src='/img/home.png'></a>";
+        $this->home .= "<a class='homeButton' href='/index.php'><img src='/img/home.png' alt='Image retour au menu'></a>";
     }
 }

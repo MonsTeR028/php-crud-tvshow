@@ -8,6 +8,7 @@ use Entity\TVShow;
 
 $webPage = new AppWebPage("Séries TV");
 $webPage->appendMenuButton('Ajouter', '/admin/show-form.php');
+$webPage->appendToHead("<meta name='description' content='Cherchez la série dont vous avez besoin'>");
 $rech = empty($_GET['recherche']) ? null : $_GET['recherche'];
 
 $genreSelector = <<<HTML
@@ -67,7 +68,7 @@ foreach ($listeShow as $tvShow) {
                         <a href="show.php?showId={$tvShow->getId()}">
                             <div class="show">
                                 <div class="showPoster">
-                                    <img src="poster.php?posterId={$tvShow->getPosterId()}" alt="{$tvShow->getName()}">
+                                    <img src="poster.php?posterId={$tvShow->getPosterId()}" alt="Image de la série {$tvShow->getName()}">
                                 </div>
                                 <div class="informations">
                                     <div class="showTitle">
