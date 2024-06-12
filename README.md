@@ -4,7 +4,7 @@
 
 * **Nom :** GENEVOIS
 * **Prénom :** Gatien
-* **Email :** gatien.genevois.genevois@etudiant.univ-reims.fr
+* **Email :** gatien.genevois@etudiant.univ-reims.fr
 * **Login :** gene0024
 * **Nom :** AUDINOT
 * **Prénom :** Tristan
@@ -38,13 +38,27 @@ Ce projet consiste à développer une application Web de consultation de séries
 
 ## Installation et lancement
 
-1. **Cloner le dépôt :** `git clone https://gitlab.com/votre_groupe/sae2-01.git`
+1. **Cloner le dépôt :** `git clone https://iut-info.univ-reims.fr/gitlab/audi0010/php-crud-tvshow.git`
 2. **Installer les dépendances :** `composer install`
-3. **Créer la base de données :** *Instructions fournies le 10 juin*
-4. **Charger les fixtures :** *Instructions fournies le 10 juin*
-5. **Lancer le serveur web :** *php -d display_errors -S localhost:8000 -t public/*
+3. **Lancer le serveur web :** *php -d display_errors -S localhost:8000 -t public/* ou *composer start:linux/windows*
+
+## Création de la base de données
+
+1. **Créer la base de donnée :** `CREATE DATABASE tvshow_db;
+   `  
+2. **Utiliser la base de données nouvellement créée :** `USE tvshow_db;
+   `
+3. **Importer le script SQL pour créer les tables et insérer les données initiales :** `USE tvshow_db;
+   `
+4. **Possible avec l'interface graphique de phpmyadmin**
+
+## Tests
+
+1. **Installer Codeception globalement si ce n'est pas déjà fait :** `composer global require codeception/codeception`
+2. **Initialiser Codeception dans le projet :** `codecept bootstrap`
 
 ## Fonctionnalités
 
-* **Consultation des données :** Affichage des données de la base de données.
-* **Modification des données :** Interfaces pour ajouter, modifier et supprimer des données.
+* **Consultation des données :** Affichage des données de la base de données (séries, saisons, épisodes).
+* **Modification des données :** Interfaces pour ajouter, modifier et supprimer des données (séries).
+
