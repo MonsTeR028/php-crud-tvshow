@@ -24,12 +24,15 @@
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^3.58",
-    "codeception/codeception": "*",
-    "codeception/module-phpbrowser": "*",
-    "codeception/module-asserts": "*",
-    "codeception/module-db": "*",
+    "codeception/codeception": "5.0",
+    "codeception/module-phpbrowser": "^2.0",
+    "codeception/module-asserts": "^2.0",
+    "codeception/module-db": "3.1.4",
     "ext-dom": "*",
-    "ext-libxml": "*"
+    "ext-libxml": "*",
+    "phpunit/phpunit": "^9.5",
+    "ext-pdo_sqlite": "*",
+    "ext-sqlite3": "*"
   },
   "scripts": {
     "start:linux": [
@@ -51,6 +54,9 @@
     ],
     "fix:cs": [
       "php vendor/bin/php-cs-fixer fix"
+    ],
+    "test": [
+      "bin/test.bat"
     ]
   }
 }

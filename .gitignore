@@ -5,3 +5,4 @@
 .php-cs-fixer.cache
 /composer.phar
 /.phpdoc/
+/.phpunit.result.cache
