@@ -52,11 +52,21 @@ class WebPage
         return $this->home;
     }
 
+    /**
+     * Permet d'ajouter du contenu à la balise <head>
+     * @param string $content : le contenu à ajouter
+     * @return void
+     */
     public function appendToHead(string $content): void
     {
         $this->head .= $content;
     }
 
+    /**
+     * Permet d'ajouter du css à la page
+     * @param string $css : le css à ajouter
+     * @return void
+     */
     public function appendCss(string $css): void
     {
         $this->head .= <<<HTML
@@ -64,6 +74,11 @@ class WebPage
         HTML;
     }
 
+    /**
+     * Permet d'ajouter un lien vers une feuille de style css
+     * @param string $url : lien de la feuille de style
+     * @return void
+     */
     public function appendCssUrl(string $url): void
     {
         $this->head .= <<<HTML
@@ -71,6 +86,11 @@ class WebPage
         HTML;
     }
 
+    /**
+     * Permet d'ajouter du javascript à la page
+     * @param string $js : script à ajouter
+     * @return void
+     */
     public function appendJs(string $js): void
     {
         $this->head .= <<<HTML
@@ -78,6 +98,11 @@ class WebPage
         HTML;
     }
 
+    /**
+     * Permet d'ajouter un lien vers un script JavaScript
+     * @param string $url : le lien du script JavaScript
+     * @return void
+     */
     public function appendJsUrl(string $url): void
     {
         $this->head .= <<<HTML
@@ -85,11 +110,20 @@ class WebPage
         HTML;
     }
 
+    /**
+     * Permet d'ajouter du contenu à la balise <body> de la page
+     * @param string $content : le contenu à ajouter
+     * @return void
+     */
     public function appendContent(string $content): void
     {
         $this->body .= $content;
     }
 
+    /**
+     * Permet de créer la page html
+     * @return string : la page html
+     */
     public function toHTML(): string
     {
         return <<<HTML
