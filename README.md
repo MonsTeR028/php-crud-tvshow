@@ -62,3 +62,5 @@ Ce projet consiste à développer une application Web de consultation de séries
 * **Consultation des données :** Affichage des données de la base de données (séries, saisons, épisodes).
 * **Modification des données :** Interfaces pour ajouter, modifier et supprimer des données (séries).
 
+## Documentation
+* **La documentation est disponible dans Documentation/index.html**
