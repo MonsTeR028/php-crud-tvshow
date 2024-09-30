@@ -4,12 +4,12 @@
 
 * **Nom :** GENEVOIS
 * **Prénom :** Gatien
-* **Email :** gatien.genevois@etudiant.univ-reims.fr
+* **Email :** -
 * **Login :** gene0024
 * **Nom :** AUDINOT
 * **Prénom :** Tristan
 * **Login :** audi0010
-* **Email :** tristan.audinot@etudiant.univ-reims.fr
+* **Email :** tristan.aud2@gmail.com
 
 ## Description du projet
 
@@ -34,7 +34,7 @@ Ce projet consiste à développer une application Web de consultation de séries
 * Mise en forme **CSS** avec **flexbox**, approche **mobile first** et **media queries**
 * Validation **HTML** et **CSS**, vérification des performances avec **Lighthouse**
 * Réponses **HTTP** avec codes de statut appropriés
-* Tests (facultatifs) avec une base de données **SQLite** réduite
+* Tests avec une base de données **SQLite** réduite
 
 ## Installation et lancement
 
