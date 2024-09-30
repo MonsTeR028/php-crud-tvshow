@@ -1,4 +1,4 @@
-# SAÉ 2.01 - Développement d'une application Web de consultation de séries
+# Développement d'une application Web de consultation de séries
 
 ## Membres du binôme
 
@@ -38,7 +38,7 @@ Ce projet consiste à développer une application Web de consultation de séries
 
 ## Installation et lancement
 
-1. **Cloner le dépôt :** `git clone https://iut-info.univ-reims.fr/gitlab/audi0010/php-crud-tvshow.git`
+1. **Cloner le dépôt :** `git clone https://github.com/MonsTeR028/php-crud-tvshow.git`
 2. **Installer les dépendances :** `composer install`
 3. **Lancer le serveur web :** *php -d display_errors -S localhost:8000 -t public/* ou *composer start:linux/windows*
 
