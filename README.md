@@ -1,15 +1,15 @@
-# SAÉ 2.01 - Développement d'une application Web de consultation de séries
+# Développement d'une application Web de consultation de séries
 
 ## Membres du binôme
 
 * **Nom :** GENEVOIS
 * **Prénom :** Gatien
-* **Email :** gatien.genevois@etudiant.univ-reims.fr
+* **Email :** -
 * **Login :** gene0024
 * **Nom :** AUDINOT
 * **Prénom :** Tristan
 * **Login :** audi0010
-* **Email :** tristan.audinot@etudiant.univ-reims.fr
+* **Email :** tristan.aud2@gmail.com
 
 ## Description du projet
 
@@ -34,11 +34,11 @@ Ce projet consiste à développer une application Web de consultation de séries
 * Mise en forme **CSS** avec **flexbox**, approche **mobile first** et **media queries**
 * Validation **HTML** et **CSS**, vérification des performances avec **Lighthouse**
 * Réponses **HTTP** avec codes de statut appropriés
-* Tests (facultatifs) avec une base de données **SQLite** réduite
+* Tests avec une base de données **SQLite** réduite
 
 ## Installation et lancement
 
-1. **Cloner le dépôt :** `git clone https://iut-info.univ-reims.fr/gitlab/audi0010/php-crud-tvshow.git`
+1. **Cloner le dépôt :** `git clone https://github.com/MonsTeR028/php-crud-tvshow.git`
 2. **Installer les dépendances :** `composer install`
 3. **Lancer le serveur web :** *php -d display_errors -S localhost:8000 -t public/* ou *composer start:linux/windows*
 
